@@ -1,0 +1,26 @@
+@import url("variables.css");
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0 ;
+}
+
+body {
+	background: var(--bg-color);
+	font-family: Quicksand;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1::first-letter, h2::first-letter,
+h3::first-letter,h4::first-letter,
+h5::first-letter, h6::first-letter, a::first-letter {
+	text-transform: uppercase;
+}
+
+ul {
+	list-style-type: none;
+}

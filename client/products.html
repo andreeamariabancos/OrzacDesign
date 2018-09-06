@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OrzacDesign</title>
+	
+	<!--Jquery Script-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!--My Script-->
+	<script type="text/javascript" src="js/filter-jquery.js"></script>
+	<script type="text/javascript" src="js/responsive-header-jquery.js"></script>
+
+	<!--My Stylesheet-->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/products.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	
+
+	<!--Font Style Stylesheet-->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+	<!--Fontawesome Stylesheet-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<!-- Header Section-->
+	<header class="product-page-header">	
+			<!--Navigation bar-->
+			<div class="navbar">
+				<div class="nav" id="responsiveNav">
+					<div class="responsive-media">
+						<a href="#">
+							<i class="fas fa-cart-arrow-down"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-facebook-square"></i>
+						</a>
+						<a href="#">
+							<i class="fab fa-instagram"></i>
+						</a>
+					</div>
+					<div class="leftgroup-bar">
+						<a href="index.html">home</a>
+						<a href="#">about</a>
+						<a href="products.html">store</a>
+						<a href="#">contact</a>
+						<a  href="#">log in</a>
+					</div>
+					<a class="icon-nav" >
+						<i class="fa fa-bars"></i>
+					</a>
+
+				</div>		
+			</div><!-- End Navigation bar-->		
+			
+		</header> <!--End Header Section-->
+
+	<div class="container-products-page">
+
+		<!-- Filter Section-->
+		<div class="filter-main">
+			<div class="filter">
+
+				<!--Search Block-->
+				<div class="filter-block">
+					<h4> Search </h4>
+					<div class="filter-content">
+						<input id ="searchFilter" placeholder="title/description...">
+					</div>
+				</div>	<!-- End Search Block-->
+
+				<!--Checkbox Block-->
+				<div class="filter-block">
+					<h4>choose the color</h4>
+					<ul class="filter-content">
+						<li>
+							<input type="checkbox" name="red" id="red" class="input-color">	
+							<label for="red">red</label>
+						</li>
+
+						<li>
+							<input  type="checkbox" name="white" id="white" class="input-color">	
+							<label for="white">white</label>
+						</li>
+
+						<li>
+							<input  type="checkbox" name="black" id="black"class="input-color">
+							<label for="black">black</label>
+						</li>
+
+						<li>
+							<input  type="checkbox" name="brown" id="brown"class="input-color">
+							<label for="brown">brown</label>
+						</li>
+					</ul> 
+				</div> <!-- End Checkbox Block-->
+
+				<!-- Select Block-->
+				<div class="filter-block">
+					<h4>Select categories</h4>	
+					<div class="filter-content">
+						<div>
+							<select id="select">
+								<option value="All">all</option>
+								<option value="Bedroom">bedroom</option>
+								<option value="Living Room">living room</option>
+								<option value="Kitchen">kitchen</option>
+								<option value="Bathroom">bathroom</option>
+							</select>
+						</div> 
+					</div> 
+				</div> <!-- End Select Block-->
+
+				<!-- Radio Buttons Section-->
+				<div class="filter-block">
+					<h4>more filters</h4>
+					<ul id="radioFilter" class="filter-content">
+						<li>
+							<input id="radioNan" value="None" class="radio-design" type="radio" name="radioButton" >
+							<label class="radio-label" for="Modern">None</label>
+						</li>
+						<li class="showFirst">
+							<input id="radioPrice"  type="radio" name="radioButton" class="radio-input" >
+							<label id = "labelPrice" for="radioPrice">Price</label>
+						</li>
+						<li class="hideSecond">
+							<input id="radioDesign"  type="radio" name="radioButton" class="radio-input">
+							<label id="labelDesign" for="radioDesign">Design</label>
+						</li>
+					</ul> 
+				</div> <!-- End Radio Buttons Section-->	
+			</div><!-- End Filter-->
+		</div><!-- End Filter Main-->
+
+		<!-- Filters Button-->
+		<a href="#0" class="filter-trigger">
+			<i class="fas fa-filter"></i>
+			<i class="fas fa-times"></i>
+		</a>
+
+		<!-- Products and Pagination Section -->
+		<div class="products-main">
+			  <ul class="pagination-container">
+				    <li class="page-item">
+				      <div id="prev" class="page-pointer prev" href="#">
+				        <span aria-hidden="true">&laquo;</span>
+				      </div>
+				    </li>
+				   
+				    <li class="page-item">
+				    	<div class="start" id="pagination"></div>
+				    </li>
+
+				    <li class="page-item">
+				      <div id="next" class="page-pointer next" href="#">
+				        <span aria-hidden="true">&raquo;</span>
+				      </div>
+				    </li>
+			  </ul>
+			<div class="container-products">	
+				<section class="products"></section>
+			</div>	
+		</div>
+	</div><!-- End Products/Pagination Section-->
+
+	</div><!-- End Content Page -->
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+/**** CSS for header section ****/
+
+@import url("variables.css");
+
+.header-index {
+  background-image:linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7)), url("../img/header-index.jpg");
+  /*width: 100vw;*/
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.navbar {
+	max-height: 100px;
+	max-width: 800px;
+	margin-left: 30px;
+}
+
+.nav {
+	max-width: 700px;
+}
+
+.nav a {
+	display: inline-block;
+	line-height: 40px;
+	color: var(--first-color);
+	text-decoration: none;
+	margin: 12px;  
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.nav a:hover {
+
+}
+
+.nav .icon-nav {
+	display: none;
+}
+
+.responsive-media {
+    display: inline-block;
+}
+
+.leftgroup-bar {
+    display: inline-block;
+  }
+
+.fa-cart-arrow-down, .fa-facebook-square,.fa-instagram, .fa-bars {
+	font-size: 20px;
+	color: var(--first-color);
+	font-weight: bold;
+	display: inline-block;
+}
+
+.icon-nav {
+	font-size: 20px;
+}
+
+.header-main {
+	display: flex;
+	width: 100%;
+	height:100%;
+}
+
+.header-content {
+ 	margin:auto;
+}
+
+.header-content h1,h3 {
+	font-weight: 500;
+	color: var(--first-color);
+
+}
+
+.header-content h1 {
+	text-transform: uppercase;
+}
+
+.header-content h3 {
+  font-size: 25px;
+}
+
+.header-content h3 span {
+  background-color:#FF851B;
+  opacity: 0.5;
+  border-radius: 3px;
+  color: var(--third-color);
+}
+
+.btn-show-me {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 200px;
+  border: 1px solid #FF851B;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: var(--first-color);
+}
+
+.btn-show-me:hover {
+  background-color: var(--second-color);
+  opacity: 0.5;
+  transition: all 0.5s ease-in;
+  text-decoration: none;
+  color:var(--first-color); 
+}
+
+
+
+/**** Responsive header***/
+
+
+@media only screen and (max-width: 650px) {
+  .responsive-media a:not(:nth-child(1)) {
+      display: none;
+    }
+ .leftgroup-bar a {
+      display: none;   
+    }
+  .leftgroup-bar {
+        position: absolute;
+    top: 30px;
+    right: 10px;
+  }
+    
+  .nav a.icon-nav {
+    margin-right: 25px;
+    float: right;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .responsive {
+    position: relative;
+  }
+  .responsive .icon-nav {
+    position: absolute;
+    right: 65px;
+    top: 5px;
+  }
+
+
+
+  .responsive a {
+    color: var(--first-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .responsive-media a {
+    display: inline-block;
+    margin: 5px;
+  }
+
+}
+
+@media only screen and (min-width: 650px) {
+  .responsive {
+    position: relative;
+  }
+  .responsive .icon-nav {
+    position: absolute;
+    right: 65px;
+    top: 5px;
+  }
+
+
+.leftgroup-bar{
+  display: inline-block;
+  line-height: 40px;
+  color: var(--first-color);
+  text-decoration: none;
+  margin: 12px;  
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+
+
+}
+
+.leftgroup-bar a {
+  margin: 12px;
+  color: white
+}
+
+.responsive .icon-nav {
+  display: none;
+}
+
+.nav a {
+    display: inline-block;
+    line-height: 40px;
+    color: var(--first-color);
+    text-decoration: none;
+    margin: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.responsive-media a{
+  margin: 12px;
+}
+
+}

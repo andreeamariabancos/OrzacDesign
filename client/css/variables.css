@@ -1,0 +1,16 @@
+:root {
+	/**** General Color ****/
+	--bg-color:#f7f4f4;
+	--first-color: #fff;
+	--second-color : rgba(0,0,0, 0.8);
+	--third-color :#151515;
+	--fourth-color :#FF851B;
+	--fifth-color :#0C0C0C;
+
+	/**** Product Page ****/
+	--shadow :rgba(0, 0, 0, 0.2);
+	--range:#d3d3d3;
+	--block: #9a9a9a;
+
+
+}
