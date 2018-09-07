@@ -9,6 +9,7 @@ var app = new Express();
 app.use(BodyParser.json());
 app.use("/", Express.static(__dirname + "/client"));
 
+app.use('/', Express.static(`${__dirname}/client/index.html`));
 app.use('/products', Express.static(`${__dirname}/client/products.html`));
 
 Mongoose.Promise = BlueBird;

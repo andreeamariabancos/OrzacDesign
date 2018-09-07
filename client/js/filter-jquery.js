@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	const RESULTS_PER_PAGE = 8;
+	const RESULTS_PER_PAGE = 12 ;
 
 	let totalResults = 0;
 	let pages;
@@ -219,7 +219,7 @@ $(document).ready(function() {
 	}
 
 	//displays items based on pagination
-	function displayAllItems(array) {
+	/*function displayAllItems(array) {
 		$(".products").empty();
 		for (var i = 0; i < array.length; i++) {
 			$(".products").append(`
@@ -240,7 +240,7 @@ $(document).ready(function() {
 		currentPage = 1;
 		$(`.page:nth-child(${currentPage})`).addClass('selected');
 		displayPagination();
-	}	
+	}	*/
 		
 	//filter items concomitantly
 	function filter () {
@@ -375,7 +375,7 @@ $(document).ready(function() {
 		$('.range-price').remove();
 	});
 
- 	//next/prev + paging function
+ 	/*//next/prev + paging function
 	function displayPagination() {
 		currentPage = 1;
 	
@@ -414,7 +414,7 @@ $(document).ready(function() {
 		});	
 	}
 
-	$(`.page:nth-child(${currentPage})`).addClass('selected');
+	$(`.page:nth-child(${currentPage})`).addClass('selected');*/
 	// $('#next').click(function () {
 	// 		$(`.page:nth-child(${currentPage})`).removeClass('selected');
 	//         if (currentPage >= 1 && currentPage <= nrOfPage) {
