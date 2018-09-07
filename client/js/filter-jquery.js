@@ -1,18 +1,205 @@
-$( document ).ready(function() {
+$(document).ready(function() {
+	const RESULTS_PER_PAGE = 8;
 
-	var currentPage = 1;
+	let totalResults = 0;
+	let pages;
+	let currentPage = 0;
+
 	var nrOfPage = 0;
 	var database = [];
 
-	$.ajax({
-	    type:"GET",
-	    url:"/furniture/get",
-	    contentType:"application/json",
-	    success: function(data){
-	    	database = data; 
-	    	displayAllItems(database);	
-	    }
-	});
+	init();
+
+	/**
+	 * Initial function to be executed.
+	 */
+	function init() {
+		addEventListeners();
+
+		requestPage(currentPage);
+	}
+
+	/**
+	 * Add all the global event listeners.
+	 */
+	function addEventListeners() {
+		$('#next').click(function () {
+			if (pages && currentPage < pages.length - 1) {
+				selectPage(currentPage + 1);
+			}
+
+			// $(`.page:nth-child(${currentPage})`).removeClass('selected');
+
+	  //       if (currentPage >= 1 && currentPage <= nrOfPage) {
+	  //       	if (currentPage == nrOfPage) {
+	  //       		currentPage = 1;
+		 //        } else {
+	  //           	currentPage++;
+		 //        }
+	            
+	  //           $(`.page:nth-child(${currentPage})`).addClass('selected');
+	  //           var from = (currentPage-1) * 12 +1;
+			// 	var to =  10 * currentPage;
+			// 	$(".product-card").hide();
+			// 	for (var i = from; i <= to; i++) {
+			// 		$(".product-card:nth-child(" + i + ")").show();    
+			// 	}
+
+   //      	}
+    	});
+
+	    $('#prev').click(function () {
+	    	if (pages && currentPage > 0) {
+				selectPage(currentPage - 1);
+			}
+
+	   //      if (currentPage >= 2) {
+	   //      	$(`.page:nth-child(${currentPage})`).removeClass('selected');
+	   //          currentPage--;
+	   //          $(`.page:nth-child(${currentPage})`).addClass('selected');
+	   //          var from = (currentPage-1) * 12 +1;
+				// var to =  10 * currentPage;
+				// $(".product-card").hide();
+				// for (var i = from; i <= to; i++) {
+				// 	$(".product-card:nth-child(" + i + ")").show();    
+				// }
+	   //  	}
+		});
+	}
+
+	function selectPage(index) {
+		pages[currentPage].selected = false;
+		currentPage = index;
+		pages[currentPage].selected = true;
+
+		requestPage(index);
+	}
+
+	/**
+	 * Request a page by index.
+	 */
+	function requestPage(index) {
+		$.ajax({
+			type: 'GET',
+			url: `/api/products?index=${index * RESULTS_PER_PAGE + 1}&count=${RESULTS_PER_PAGE}`,
+			contentType:"application/json",
+			success: handlePage
+		});
+	}
+
+	/**
+	 * Handle the success result of the page request.
+	 */
+	function handlePage(data) {
+		totalResults = data.total;
+		render(data.result);
+	}
+
+	/**
+	 * Render the entire page.
+	 */
+	function render(array) {
+		$(".products").empty();
+
+		for (var i = 0; i < array.length; i++) {
+			$(".products").append(`
+				<div class="product-card">
+				    <div class="product-info">
+				      <img src="${array[i].img}" title="${array[i].title}" value="${array[i].description}"}">
+				      <h4 class="product-title">${array[i].title}</h4>
+				      <h5>${array[i].price} RON</h5> 
+				      <div class="product-overlay">
+					    <h6>${array[i].description}</h6>
+					    <button class="button-overlay">Details</button>
+					    <button class="button-overlay">Add Cart</button>
+					  </div>
+				    </div>
+				 </div>`);
+		}
+
+		pages = Math.ceil(totalResults / RESULTS_PER_PAGE);
+		renderNavigation(pages);
+
+		// $(`.page:nth-child(${currentPage})`).removeClass('selected');
+		// $(`.page:nth-child(${currentPage})`).addClass('selected');
+	}
+
+	function createNavigation(pageCount) {
+		pages = [];
+
+		for (let i = 0; i < pageCount; i++) {
+			pages.push({
+				selected: i == currentPage,
+				label: i + 1
+			});
+		}
+	}
+
+	function renderNavigation(pageCount) {
+		if (!pages || (pageCount > 0 && pages.length != pageCount)) {
+			createNavigation(pageCount);
+		}
+
+		$("#pagination").html('');
+
+		for (let i = 0; i < pages.length; i++) {
+			let $page = $(`<div class="page">${pages[i].label}</div>`);
+			$page.on('click', function() {
+				selectPage(i);
+			});
+
+			if (pages[i].selected) {
+				$page.addClass('selected');
+			}
+
+			$("#pagination").append($page);
+		}
+
+		// var items = $(".product-card").length;
+  //       var perPage = 12;
+  //       nrOfPage = items / perPage;
+  //       nrOfPage = Math.ceil(nrOfPage);
+
+
+		// var totalPagenum = $(".page").length;
+		// if (totalPagenum  > nrOfPage) {
+		// 	$(".page").hide();
+		// 		for (var n = 1; n <= nrOfPage; n++) {
+		// 			$(".page:nth-child(" + n + ")").show();
+		// 		}
+		// }
+
+		// $(".product-card").hide();
+		// 	for (var j = 1; j <= perPage; j++) {
+		// 		$(".product-card:nth-child(" + j + ")").show();
+		// 	}
+
+		// $(".page").click(function () {
+		// 	$(`.page:nth-child(${currentPage})`).removeClass('selected');
+		// 	currentPage = $(this).text();
+		// 	$(`.page:nth-child(${currentPage})`).addClass('selected');
+		// 	$(".product-card").hide();
+		// 	var from = (currentPage-1) * perPage +1;
+		// 	var to = perPage * currentPage;
+		// 	for (var i = from; i <= to; i++) {
+		// 		$(".product-card:nth-child(" + i + ")").show();  
+		// 	}
+		// });	
+	}
+
+	// $.ajax({
+	//     type:"GET",
+	//     url:"/api/products",
+	//     contentType:"application/json",
+	//     success: function(data){
+	//     	console.log(data);
+	//     	database = data.result; 
+
+
+	//     	displayAllItems(database);
+	//     	$(`.page:nth-child(${currentPage})`).addClass('selected');	
+	//     }
+	// });
 
 
 	//open and close lateral filter
@@ -228,38 +415,38 @@ $( document ).ready(function() {
 	}
 
 	$(`.page:nth-child(${currentPage})`).addClass('selected');
-	$('#next').click(function () {
-			$(`.page:nth-child(${currentPage})`).removeClass('selected');
-	        if (currentPage >= 1 && currentPage <= nrOfPage) {
-	        	if (currentPage == nrOfPage) {
-		        		currentPage = 1;
-		        } else {
-		            	currentPage++;
-		        }
+	// $('#next').click(function () {
+	// 		$(`.page:nth-child(${currentPage})`).removeClass('selected');
+	//         if (currentPage >= 1 && currentPage <= nrOfPage) {
+	//         	if (currentPage == nrOfPage) {
+	// 	        		currentPage = 1;
+	// 	        } else {
+	// 	            	currentPage++;
+	// 	        }
 	            
-	            $(`.page:nth-child(${currentPage})`).addClass('selected');
-	            var from = (currentPage-1) * 12 +1;
-				var to =  10 * currentPage;
-				$(".product-card").hide();
-				for (var i = from; i <= to; i++) {
-					$(".product-card:nth-child(" + i + ")").show();    
-				}
+	//             $(`.page:nth-child(${currentPage})`).addClass('selected');
+	//             var from = (currentPage-1) * 12 +1;
+	// 			var to =  10 * currentPage;
+	// 			$(".product-card").hide();
+	// 			for (var i = from; i <= to; i++) {
+	// 				$(".product-card:nth-child(" + i + ")").show();    
+	// 			}
 
-        	}
-    	});
+ //        	}
+ //    	});
 
-    $('#prev').click(function () {
-	        if (currentPage >= 2) {
-	        	$(`.page:nth-child(${currentPage})`).removeClass('selected');
-	            currentPage--;
-	            $(`.page:nth-child(${currentPage})`).addClass('selected');
-	            var from = (currentPage-1) * 12 +1;
-				var to =  10 * currentPage;
-				$(".product-card").hide();
-				for (var i = from; i <= to; i++) {
-					$(".product-card:nth-child(" + i + ")").show();    
-				}
-        	}
-    	});	
+ //    $('#prev').click(function () {
+ //        if (currentPage >= 2) {
+ //        	$(`.page:nth-child(${currentPage})`).removeClass('selected');
+ //            currentPage--;
+ //            $(`.page:nth-child(${currentPage})`).addClass('selected');
+ //            var from = (currentPage-1) * 12 +1;
+	// 		var to =  10 * currentPage;
+	// 		$(".product-card").hide();
+	// 		for (var i = from; i <= to; i++) {
+	// 			$(".product-card:nth-child(" + i + ")").show();    
+	// 		}
+ //    	}
+	// });
 });
 
