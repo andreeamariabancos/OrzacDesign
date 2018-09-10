@@ -1,15 +1,17 @@
 //exportam fisierul si trimitem la app la mongoose (argument)
 module.exports =function (Mongoose) {
-
-	var furnitureSchema = new Mongoose.Schema({
+	const furnitureSchema = new Mongoose.Schema({
 		title: String,
 		price: Number,
 		description: String,
 		colors: [String],
 		img: String,
-		categories: [String],
+		categories: [{
+			type: Mongoose.Schema.Types.ObjectId,
+			ref: 'Category'
+		}],
 		design: String
 	});
 
-	var furnitures = Mongoose.model("Furniture", furnitureSchema);
+	const furnitures = Mongoose.model("Furniture", furnitureSchema);
 }
