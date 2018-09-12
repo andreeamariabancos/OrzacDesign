@@ -32,16 +32,31 @@ module.exports = function (Mongoose, app){
 	 * Get products by limit for filter and pagination.
 	*/
 	app.post('/api/products', function(request, response) {
+		
 		const index = parseInt(request.query.index);
 		const count = parseInt(request.query.count);
+		const title = request.query.title;
+		
 
-		furnitureManager.getProductsLimit(index, count, function(data) {
+		furnitureManager.getProductsLimit(index, count, title, function(data) {
 			response.status(200).json(data);
 		}, function(error) {
 			response.status(500).json(error);
 		});
 	});
 
+	/**
+	 * Get products by category id.
+	*/
+	app.get("/api/products/categories/:id", function (request, response) {
+		var id = request.params.id	
+		furnitureManager.getProductByIdCategories(id, function (data) {
+			response.status(200).json(data);
+		}, function (error) {
+			response.status(500).json(error);
+		});
+	})
+	
 	/**
 	 * Add new products
 	*/

@@ -17,14 +17,14 @@ module.exports = function (Mongoose, app) {
 	/**
      * Get category by id.
     */
-    app.get("/api/categories/:id", function (request, response) {
-        var id = request.params.id
-        categoryManager.getByIdCategories(id, function (data) {
-            response.status(200).json(data);
-        }, function (error) {
-            response.status(500).json(error);
-        });
-    })
+	app.get("/api/categories/:id", function (request, response) {
+		var id = request.params.id
+		categoryManager.getByIdCategories(id, function (data) {
+			response.status(200).json(data);
+		}, function (error) {
+			response.status(500).json(error);
+		});
+	})
 
 
 	/**

@@ -23,7 +23,6 @@ module.exports = function (Mongoose) {
             });
         }
 
-
     /**
      * Add new category.
     */

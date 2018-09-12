@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	const RESULTS_PER_PAGE = 12 ;
+	const RESULTS_PER_PAGE = 5 ;
 
 	let totalResults = 0;
 	let pages;
@@ -18,6 +18,8 @@ $(document).ready(function() {
 	function init() {
 		addEventListeners();
 		requestPage(currentPage);
+		requestCategoryFilter();
+		requestSearchFilter();
 	}
 
 	/**
@@ -51,12 +53,36 @@ $(document).ready(function() {
 	function requestPage(index) {
 		$.ajax({
 			type: 'POST',
-			url: `/api/products?index=${index * RESULTS_PER_PAGE + 1}&count=${RESULTS_PER_PAGE}`,
+			url : `/api/products?index=${index * RESULTS_PER_PAGE + 1}&count=${RESULTS_PER_PAGE}&title=${$('#searchFilter').val().trim()}&description=${$('#searchFilter').val().trim()}`,
 			contentType:"application/json",
 			success: handlePage
-
 		});
 	}
+
+	/**
+	 * Request a page by title and description.
+	*/
+	function requestSearchFilter() {
+
+		$('#searchFilter').keyup(function() {
+			requestPage();
+		});   	
+    }
+
+    /**
+	 * Request a page by category.
+	*/
+
+    function requestCategoryFilter(index) {
+			
+			$.ajax({
+				type: 'GET',
+				url: '/api/categories',
+				contentType:"application/json",
+				success: handleCategory
+			});
+	}
+
 
 	/**
 	 * Handle the success result of the page request.
@@ -66,6 +92,26 @@ $(document).ready(function() {
 		totalResults = data.total;
 		render(data.result);
 	}
+
+	/**
+	 * Handle the success result of the category filter.
+	*/
+
+	function handleCategory(data) {
+		let all = $('<option>');
+			all.attr('value', 'All');
+			all.text('All');
+			$('#select').append(all);
+
+		for(let i = 0; i < data.length; i++) {
+			let option = $('<option>');
+			option.attr('value', data[i].title);
+			option.attr('id', data[i]['_id']);
+			option.text(data[i].title);
+			$('#select').append(option);
+		}
+	}
+
 
 	/**
 	 * Render the entire page.
@@ -93,6 +139,7 @@ $(document).ready(function() {
 		renderNavigation(pages);
 	}
 
+	
 	function createNavigation(pageCount) {
 		pages = [];
 
@@ -143,23 +190,7 @@ $(document).ready(function() {
 		});
 	}
 
-
-
-	 function requestCategory(index) {
-	 	$.ajax({
-			type: 'GET',
-			url: '/api/categories',
-			contentType:"application/json",
-			success: handleCategory
-		});
-	}
-
-	function handleCategory(data) {
-		render(data);
-		console.log (data);
-	}	
-	
-
+/*
 	//filter items concomitantly
 	function filter () {
 
@@ -220,7 +251,7 @@ $(document).ready(function() {
 			result.push(item);
 			
 		}
-		displayAllItems(result);		
+		//displayAllItems(result);		
 	};
 
 	//calls the filter function for each event
@@ -234,7 +265,7 @@ $(document).ready(function() {
 
 
 	$('#select').change(function() {
-		requestCategory();
+		
 		filter();					
 	});
 
@@ -292,7 +323,7 @@ $(document).ready(function() {
 	$('#radioNan').click(function() {
 		$('.radio').remove();
 		$('.range-price').remove();
-	});
+	});*/
 
 });
 

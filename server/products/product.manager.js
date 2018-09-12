@@ -4,15 +4,26 @@ module.exports = function (Mongoose) {
 	/**
 	 * Get product by limit for pagination and filter
 	*/
-	this.getProductsLimit = function(index, count, success, fail) {
-		Furniture.count({}, function(error, total) {
+
+	this.getProductsLimit = function(index, count, title, success, fail) {
+		Furniture.count( { title:{ $regex: new RegExp(title, 'i') } }, function(error, total) {
 			if (error) {
 				fail(error);
-			} else {
-				Furniture.find().skip(index - 1).limit(count).exec(function(error, result) {
-					error ? fail(error) : success({ total, result });
-				});
-			}
+			} else if (title) {
+						Furniture.find({
+							$and : [
+							 { $or : [ { title:{ $regex: new RegExp(title, 'i') } } , { "description":{$regex: title} } ] }
+							]}).skip(index - 1).limit(count).exec(function(error, result) {
+						error ? fail(error) : success({ total, result });
+					});
+				} 
+	
+				else {
+						Furniture.find().skip(index - 1).limit(count).exec(function(error, result) {
+						error ? fail(error) : success({ total, result });
+					});
+				}	
+			
 		});
 	};
 
@@ -26,11 +37,23 @@ module.exports = function (Mongoose) {
 	}
 
 	/**
-	* Get category by id.
+	* Get products by id.
 	*/
 	this.getByIdProducts = function (id, success, fail) {
 			Furniture.findOne({
 				_id: id
+		}, function (error, result) {
+			error ? fail(error) : success(result);
+		});
+	}
+
+	/**
+	* Get product by category id.
+	*/
+
+	this.getProductByIdCategories = function (id, success, fail) {
+		Furniture.find({
+			categories: id
 		}, function (error, result) {
 			error ? fail(error) : success(result);
 		});
