@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	const RESULTS_PER_PAGE = 5 ;
+	const RESULTS_PER_PAGE = 12
 
 	let totalResults = 0;
 	let pages;
@@ -9,22 +9,38 @@ $(document).ready(function() {
 	var nrOfPage = 0;
 	var database = [];
 
-
 	init();
 
 	/**
 	 * Initial function to be executed.
-	 */
+	*/
 	function init() {
 		addEventListeners();
 		requestPage(currentPage);
-		requestCategoryFilter();
-		requestSearchFilter();
+		renderCategoryFilter();
+	}
+
+	/**
+	 * Open and close navigation filter.
+	*/
+	$('.filter-trigger').on('click', '.fa-filter', function() {
+		triggerFilter(true);
+	});
+
+	$('.filter-trigger').on('click', '.fa-times', function(){
+		triggerFilter(false);
+	});
+
+	function triggerFilter(filter) {
+		var elementsToTrigger = $([$('.filter-trigger'), $('.fa-filter'), $('.fa-times'), $('.filter-main'), $('.products-main')]);
+		elementsToTrigger.each(function() {
+			$(this).toggleClass('filter-is-visible', filter);
+		});
 	}
 
 	/**
 	 * Add all the global event listeners.
-	 */
+	*/
 	function addEventListeners() {
 		$('#next').click(function () {
 			if (pages && currentPage < pages.length - 1) {
@@ -40,9 +56,15 @@ $(document).ready(function() {
 	}
 
 	function selectPage(index) {
-		pages[currentPage].selected = false;
+		if (pages[currentPage]) {
+			pages[currentPage].selected = false;
+		}
+
 		currentPage = index;
-		pages[currentPage].selected = true;
+
+		if (pages[currentPage]) {
+			pages[currentPage].selected = true;
+		}
 
 		requestPage(index);
 	}
@@ -51,38 +73,51 @@ $(document).ready(function() {
 	 * Request a page by index.
 	*/
 	function requestPage(index) {
-		$.ajax({
-			type: 'POST',
-			url : `/api/products?index=${index * RESULTS_PER_PAGE + 1}&count=${RESULTS_PER_PAGE}&title=${$('#searchFilter').val().trim()}&description=${$('#searchFilter').val().trim()}`,
-			contentType:"application/json",
+		const title = $('#searchFilter').val().trim();
+
+		const $colors = $('#color-filter input[name]:checked');
+		const colors = [];
+
+		for (let i = 0; i < $colors.length; i++) {
+			let value = $($colors[i]).val();
+			value = value.substr(0, 1).toUpperCase() + value.substr(1);
+			colors.push(value);
+		}
+
+		const categories = $('#select').val();
+		const design = $('input[name=radioGroup]:checked').val();
+		const price = $("[type=range]").val();
+			
+	 	$.ajax({
+			type : "POST",
+			url : `/api/products?index=${index * RESULTS_PER_PAGE + 1}&count=${RESULTS_PER_PAGE}`,
+			contentType : "application/json; charset=utf-8",
+			dataType: "json",
+			data: JSON.stringify({
+				title : title,
+				description : title,
+				colors : colors, 
+				categories : categories,
+				design : design,
+				price : price
+			}),
 			success: handlePage
 		});
-	}
-
-	/**
-	 * Request a page by title and description.
-	*/
-	function requestSearchFilter() {
-
-		$('#searchFilter').keyup(function() {
-			requestPage();
-		});   	
     }
-
+	
     /**
-	 * Request a page by category.
+	 * Render category filter.
 	*/
 
-    function requestCategoryFilter(index) {
+    function renderCategoryFilter() {
 			
 			$.ajax({
 				type: 'GET',
 				url: '/api/categories',
 				contentType:"application/json",
-				success: handleCategory
+				success: successCategory
 			});
 	}
-
 
 	/**
 	 * Handle the success result of the page request.
@@ -91,13 +126,14 @@ $(document).ready(function() {
 
 		totalResults = data.total;
 		render(data.result);
+		console.log(data.result)
 	}
 
 	/**
 	 * Handle the success result of the category filter.
 	*/
 
-	function handleCategory(data) {
+	function successCategory(data) {
 		let all = $('<option>');
 			all.attr('value', 'All');
 			all.text('All');
@@ -105,13 +141,11 @@ $(document).ready(function() {
 
 		for(let i = 0; i < data.length; i++) {
 			let option = $('<option>');
-			option.attr('value', data[i].title);
-			option.attr('id', data[i]['_id']);
+			option.attr('value', data[i]._id);
 			option.text(data[i].title);
 			$('#select').append(option);
 		}
 	}
-
 
 	/**
 	 * Render the entire page.
@@ -121,18 +155,15 @@ $(document).ready(function() {
 
 		for (var i = 0; i < array.length; i++) {
 			$(".products").append(`
-				<div class="product-card">
-				    <div class="product-info">
-				      <img src="${array[i].img}" title="${array[i].title}" value="${array[i].description}"}">
-				      <h4 class="product-title">${array[i].title}</h4>
-				      <h5>${array[i].price} RON</h5> 
-				      <div class="product-overlay">
-					    <h6>${array[i].description}</h6>
-					    <button class="button-overlay">Details</button>
-					    <button class="button-overlay">Add Cart</button>
-					  </div>
-				    </div>
-				 </div>`);
+			<div class="product-card">
+				<img src="${array[i].img}" title="${array[i].title}" value="${array[i].description}"}"> 
+				<div class="figcaption">
+					<h2>${array[i].title}</h2>
+					<p>${array[i].description}</p>	
+					<p class="price">${array[i].price} RON</p>
+    				<p class="button-overlay">Add Cart</p>
+				</div class="figcaption">	
+			</div>`);
 		}
 
 		pages = Math.ceil(totalResults / RESULTS_PER_PAGE);
@@ -172,104 +203,23 @@ $(document).ready(function() {
 		}
 	}
 
-	/**
-	 * Open and close navigation filter.
-	*/
-	$('.filter-trigger').on('click', '.fa-filter', function() {
-		triggerFilter(true);
-	});
 
-	$('.filter-trigger').on('click', '.fa-times', function(){
-		triggerFilter(false);
-	});
+		$('#searchFilter').keyup(function() {
+			selectPage(0);
+    	});
 
-	function triggerFilter(filter) {
-		var elementsToTrigger = $([$('.filter-trigger'), $('.fa-filter'), $('.fa-times'), $('.filter-main'), $('.products-main')]);
-		elementsToTrigger.each(function() {
-			$(this).toggleClass('filter-is-visible', filter);
+	
+		$(".input-color").click(function() {
+			selectPage(0);
+		});	
+    
+
+		$('#select').change(function() {
+			selectPage(0);				
 		});
-	}
+    
 
-/*
-	//filter items concomitantly
-	function filter () {
-
-		var result = [];
-
-		var filterSearch = $('#searchFilter').val().toLowerCase().trim(); 
-		
-		var filterColor = {
-			red: $("#red").prop("checked"),
-			white: $("#white").prop("checked"),
-			black: $("#black").prop("checked"),
-			brown: $("#brown").prop("checked")
-		};
-
-		var filterCategory = $('#select').val();
-		var filterPrice = $("[type=range]").val();
-		var filterDesign = $('input[name=radioGroup]:checked').val()
-
-		for (var i = 0; i < database.length; i++) {
-
-			var item = database[i];
-			var title = item.title.toLowerCase().indexOf(filterSearch.toLowerCase()) + 1;
-			var description = item.description.toLowerCase().indexOf(filterSearch.toLowerCase()) + 1;
-
-			if (filterSearch && !((title || description) > 0)) {
-				continue;
-			}
-
-			if (filterColor.red && !(item.colors.findIndex(function(item) { return item.toLowerCase() == "red" }) > -1)) {
-				continue;
-			}
-
-			if (filterColor.white && !(item.colors.findIndex(function(item) { return item.toLowerCase() == "white" }) > -1)) {
-				continue;
-			}
-			if (filterColor.black && !(item.colors.findIndex(function(item) { return item.toLowerCase() == "black" }) > -1)) {
-				continue;
-			}
-
-			if (filterColor.brown && !(item.colors.findIndex(function(item) { return item.toLowerCase() == "brown" }) > -1)) {
-				continue;
-			}
-
-
-			if (filterCategory && filterCategory != "All" && !(item.categories.indexOf(filterCategory) > -1)) {
-				continue;
-			}
-			
-			if(filterPrice && !(item.price <= filterPrice)) {	
-				continue;
-
-			} 
-			
-			if (filterDesign && !(item.design.indexOf(filterDesign) > -1)) {	
-					continue;		
-			}
-			
-			result.push(item);
-			
-		}
-		//displayAllItems(result);		
-	};
-
-	//calls the filter function for each event
-	$('#searchFilter').keyup(function() {
-		filter();
-	 });
-
-	$(".input-color").click(function() {
-		filter(); 
-	});
-
-
-	$('#select').change(function() {
-		
-		filter();					
-	});
-
-	$('.radio-input').one('click', function() {
+		$('.radio-input').one('click', function() {
 		var price = $('#radioPrice').prop('checked');
 		var design = $('#radioDesign').prop('checked');
 		if(price) {
@@ -284,7 +234,7 @@ $(document).ready(function() {
 				$("[type=range]").change(function() {
 				var newVal=$(this).val();
 				$(this).next().text(newVal);
-				filter();
+				selectPage(0);
 			});
 
 		} else if (design) {
@@ -303,7 +253,7 @@ $(document).ready(function() {
 				</li>`);
 
 			$(".radio-design").click(function() {
-					filter();
+					selectPage(0);
 		    });
 		}
 
@@ -323,7 +273,8 @@ $(document).ready(function() {
 	$('#radioNan').click(function() {
 		$('.radio').remove();
 		$('.range-price').remove();
-	});*/
+	});
 
+		
 });
 

@@ -5,8 +5,6 @@
 	min-height: 100vh;
 }
 
-/**** Filter Section ****/
-
 .product-page-header {
 	position: relative;
 	height: 250px;
@@ -14,6 +12,9 @@
 	background-position: center no-repeat;
 	background-attachment: fixed;
 }
+
+/**** Filter Section ****/
+
 
 .filter-main {
 	position: absolute;
@@ -60,7 +61,7 @@
 
 .fa-filter, .fa-times {
     position: absolute;
-    top: 20px;
+    top: 8px;
 }
 .fa-filter {
 	color:var(--fourth-color);
@@ -136,16 +137,16 @@ label {
 
 .range-input {
 	-webkit-appearance: none;
-	width: 50%;
 	height: 15px;
 	border-radius: 10px;
 	background: var(--range);
 	transition: opacity .5s;
-	border-style: none;	
 }
 
+
 .range-input:hover {
-	border-style: none;
+	border-style: inset
+	border-width: 1px;
 	background:var(--fourth-color);
 	opacity: 0.5;
 }
@@ -169,82 +170,122 @@ label {
 	display: flex;
 }
 
-.product-info {
+.product-card {
+	color: var(--first-color);
 	position: relative;
-	height: auto;
-	width: 314px;
-	box-shadow: 4px 4px 20px var(--shadow);
-	margin-bottom: 15px;
-}
-
-.product-info img {
-	display: block;
-	height: 190px;
-	width: 280px;
-	margin: 14px;
-	box-shadow: 4px 4px 20px var(--shadow);
-}
-
-.product-overlay {
-	top: 14px;
-	left: 14px;
-	height: 190px;
-	width: 280px;
-	background-image: linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7));
-	position: absolute;
+	float: left;
 	overflow: hidden;
-	-ms-transform: scale(0);
-	transform: scale(0);
-	transition: .5s ease;
+	margin: 10px 1%;
+	min-width: 220px;
+	max-width: 310px;
+	max-height: 220px;
+	width: 100%;
+	background: var(--black);
+	text-align: right;
 }
-
-.product-info:hover .product-overlay {
-	opacity: 0.8;
-	-webkit-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1);
+.product-card * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.product-card img {
+	opacity: 1;
+	width: 100%;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+}
+.product-card .figcaption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 30px 3em;
+	width: 100%;
+	height: 100%;
+}
+.product-card .figcaption::before {
+	position: absolute;
+	top: 30px;
+	right: 100%;
+	bottom: 30px;
+	left: 30px;
+	border-right: 4px solid rgba(255, 255, 255, 0.8);
+	content: '';
+	opacity: 0;
+	background-color: rgba(255, 255, 255, 0.5);
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-transition-delay: 0.6s;
+	transition-delay: 0.6s;
+}
+.product-card h2,
+.product-card p {
+	margin: 0 0 5px;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s,
+	-webkit-transform 0.35s,
+	-moz-transform 0.35s,
+	-o-transform 0.35s,
+	transform 0.35s;
+}
+.product-card h2 {
+	word-spacing: -0.15em;
+	font-weight: 300;
+	text-transform: uppercase;
+	-webkit-transform: translate3d(-30%, 0%, 0);
+	transform: translate3d(-30%, 0%, 0);
+	-webkit-transition-delay: 0.3s;
+	transition-delay: 0.3s;
 	}
 
-.product-info img:hover {
-	box-shadow: 0px 1px 55px #ccc;
+.product-card p {
+	font-weight: 200;
+	-webkit-transform: translate3d(0%, -30%, 0);
+	transform: translate3d(0%, -30%, 0);
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
 }
 
-.product-info h4 {
+.price {
 	color: var(--fourth-color);
-	opacity:0.7;
-	font-size: 20px;
-	text-align:center;
 }
 
-.product-info h5 {
-	color: var(--fourth-color);
-	opacity:0.7;
-	font-size: 12px;
-	text-align: center;
-	margin-bottom: 15px;
+.product-card:hover img {
+	opacity: 0.3;
 }
-
-.product-overlay h6 {
-	color: var(--fourth-color);
-	text-align: center;
-	margin: 28px;
-	font-size: 15px;
+.product-card:hover .figcaption h2,
+.product-card:hover .figcaption p {
+	visibility: visible;
 }
-
+.product-card:hover .figcaption h2 {
+	opacity: 1;
+	-webkit-transform: translate3d(0%, 0%, 0);
+	transform: translate3d(0%, 0%, 0);
+	-webkit-transition-delay: 0.4s;
+	transition-delay: 0.4s;
+}
+.product-card:hover .figcaption p {
+	opacity: 0.9;
+	-webkit-transform: translate3d(0%, 0%, 0);
+	transform: translate3d(0%, 0%, 0);
+	-webkit-transition-delay: 0.6s;
+	transition-delay: 0.6s;
+}
+.product-card:hover .figcaption::before {
+	background: rgba(255, 255, 255, 0);
+	right: 30px;
+	opacity: 1;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
 .button-overlay {
-    position: relative;
-    background-color: var(--fourth-color);
-    margin-left: 45px;
-    font-size: 12px;
-    color: var(--first-color);
-    padding: 3px;
-    width: 70px;
-    height: 30px;
-    text-align: center;
-    transition-duration: 0.4s;
-    overflow: hidden;
-    cursor: pointer;
-    border-style:none;
+	background-color: var(--fourth-color);
+	color: var(--first-color);
+	padding: 3px;
+	height: 30px;
+	text-align: center;
+	transition-duration: 0.4s;
+	overflow: hidden;
+	cursor: pointer;
 }
 
 .button-overlay:after {
@@ -266,10 +307,12 @@ label {
     transition: 0s
 }
 
-.pagination-container {
+
+.page-item {
 	display: flex;
-	margin-top: 20px;
-	margin-left: 40%;
+	display: flex;
+    margin-top: 20px;
+    margin-left: 40%;
 }
 
 .page {

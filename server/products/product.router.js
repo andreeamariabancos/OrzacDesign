@@ -35,10 +35,14 @@ module.exports = function (Mongoose, app){
 		
 		const index = parseInt(request.query.index);
 		const count = parseInt(request.query.count);
-		const title = request.query.title;
+		const title = request.body.title;
+		const description = request.body.description;
+		const colors = request.body.colors;
+		const categories = request.body.categories;
+		const design = request.body.design;
+		const price = request.body.price;
 		
-
-		furnitureManager.getProductsLimit(index, count, title, function(data) {
+		furnitureManager.getProductsLimit(index, count, title, description, colors, categories, design, price, function(data) {
 			response.status(200).json(data);
 		}, function(error) {
 			response.status(500).json(error);

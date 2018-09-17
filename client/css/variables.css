@@ -1,9 +1,9 @@
 :root {
 	/**** General Color ****/
-	--bg-color:#f7f4f4;
+	--bg-color: #f7f4f4;
 	--first-color: #fff;
-	--second-color : rgba(0,0,0, 0.8);
-	--third-color :#151515;
+	--second-color: rgba(0,0,0, 0.8);
+	--third-color:#151515;
 	--fourth-color :#FF851B;
 	--fifth-color :#0C0C0C;
 
@@ -12,5 +12,8 @@
 	--range:#d3d3d3;
 	--block: #9a9a9a;
 
-
+	/**** Details Page ****/
+	--black:#000;
+	--red:#730000;
+	--brown:#8B4513;
 }

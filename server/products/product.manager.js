@@ -5,27 +5,63 @@ module.exports = function (Mongoose) {
 	 * Get product by limit for pagination and filter
 	*/
 
-	this.getProductsLimit = function(index, count, title, success, fail) {
-		Furniture.count( { title:{ $regex: new RegExp(title, 'i') } }, function(error, total) {
+	this.getProductsLimit = function(index, count, title, description, colors, categories, design, price, success, fail) {
+		const options = {};
+
+		if (title) {
+			options.$and = options.$and || [];
+			options.$and.push({
+				$or: [{
+					title: new RegExp(title, 'i')
+				}, {
+					description: new RegExp(title, 'i')
+				}]
+			});
+		} 
+
+		if (colors && colors.length > 0) {
+			options.$and = options.$and || [];
+			options.$and.push({
+				colors: {
+					$in: colors
+				}
+			});
+		}
+
+		if(categories && categories != "All") {
+			options.$and = options.$and || [];
+			options.$and.push({
+				categories
+			});
+		}
+
+		if (design) {
+			options.$and = options.$and || [];
+			options.$and.push({
+				design: design
+			});
+		}
+
+		if (price) {
+			options.$and = options.$and || [];
+			options.$and.push({
+			 price: { "$lte":price}
+			});
+		}
+
+		Furniture.count(options, function(error, total) {
 			if (error) {
 				fail(error);
-			} else if (title) {
-						Furniture.find({
-							$and : [
-							 { $or : [ { title:{ $regex: new RegExp(title, 'i') } } , { "description":{$regex: title} } ] }
-							]}).skip(index - 1).limit(count).exec(function(error, result) {
-						error ? fail(error) : success({ total, result });
+			} else {
+				Furniture.find(options).skip(index - 1).limit(count).exec(function(error, result) {
+					error ? fail(error) : success({
+						total: total,
+						result: result
 					});
-				} 
-	
-				else {
-						Furniture.find().skip(index - 1).limit(count).exec(function(error, result) {
-						error ? fail(error) : success({ total, result });
-					});
-				}	
-			
+				});
+			}
 		});
-	};
+	}
 
 	/**
 	 * Get all products. 
@@ -85,9 +121,9 @@ module.exports = function (Mongoose) {
 	*/
 	this.updateProducts = function(id, data, succes,fail) {
 		Furniture.findOneAndUpdate({ _id: id }, { $set: data }, { new: true }, function(error,result){
-		 	console.log(result)
 			error ? fail(error) : succes(result);
 		});
 	}
 
 }
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OrzacDesign</title>
+	<title>Products Page OrzacDesign</title>
 	
 	<!--Jquery Script-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -74,24 +74,24 @@
 				<!--Checkbox Block-->
 				<div class="filter-block">
 					<h4>choose the color</h4>
-					<ul class="filter-content">
+					<ul id="color-filter" class="filter-content">
 						<li>
-							<input type="checkbox" name="red" id="red" class="input-color">	
+							<input type="checkbox" name="red" value="red" class="input-color">	
 							<label for="red">red</label>
 						</li>
 
 						<li>
-							<input  type="checkbox" name="white" id="white" class="input-color">	
+							<input  type="checkbox" name="white" value="white" class="input-color">	
 							<label for="white">white</label>
 						</li>
 
 						<li>
-							<input  type="checkbox" name="black" id="black"class="input-color">
+							<input  type="checkbox" name="black" value="black"class="input-color">
 							<label for="black">black</label>
 						</li>
 
 						<li>
-							<input  type="checkbox" name="brown" id="brown"class="input-color">
+							<input  type="checkbox" name="brown" value="brown"class="input-color">
 							<label for="brown">brown</label>
 						</li>
 					</ul> 
@@ -142,23 +142,25 @@
 
 		<!-- Products and Pagination Section -->
 		<div class="products-main">
-			  <ul class="pagination-container">
-				    <li class="page-item">
+			<div class="pagination-container">
+			  	<ul class="page-item">
+				    <li>
 				      <div id="prev" class="page-pointer prev" href="#">
 				        <span aria-hidden="true">&laquo;</span>
 				      </div>
 				    </li>
 				   
-				    <li class="page-item">
+				    <li>
 				    	<div class="start" id="pagination"></div>
 				    </li>
 
-				    <li class="page-item">
+				    <li>
 				      <div id="next" class="page-pointer next" href="#">
 				        <span aria-hidden="true">&raquo;</span>
 				      </div>
 				    </li>
-			  </ul>
+			  	</ul>
+			</div>
 			<div class="container-products">	
 				<section class="products"></section>
 			</div>	
