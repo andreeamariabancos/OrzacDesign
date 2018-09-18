@@ -167,7 +167,16 @@ $(document).ready(function() {
 
 		pages = Math.ceil(totalResults / RESULTS_PER_PAGE);
 		renderNavigation(pages);
+
+			$(".product-card").click(function() {
+				 window.location = '/details/'
+				 alert($(this).attr("id"));
+
+			//alert("bla bla")
+		});	
 	}
+
+	
 
 	
 	function createNavigation(pageCount) {

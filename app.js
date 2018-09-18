@@ -1,4 +1,4 @@
-//npm init for json-pack
+//nwpm init for json-pack
 var Express = require("express");//npm intall express
 var BodyParser = require("body-parser"); //npm intall body-parser
 var Mongoose = require("mongoose");//npm intall mongose
@@ -18,17 +18,17 @@ app.use(/.*\.jpg/, function(request, response) {
 	response.sendFile(`${__dirname}/client/${request.originalUrl}`);
 });
 
-// app.use('/products', function(request, response) {
-// 	response.sendFile(`${__dirname}/client/products.html`);
-// });
 app.get(/^\/(?!api).*/, function(request, response) {
-	const url = (request.originalUrl == '/' ? '/index' : request.originalUrl);
+	let url = (request.originalUrl == '/' ? '/index' : request.originalUrl);
 
+	if (url.indexOf('/details/') == 0) {
+		url = '/details';
+	} else {
+		console.log('nope')
+	}
 	response.sendFile(`./client${url}.html`, { root: __dirname });
 });
-// app.use('/*', Express.static(`${__dirname}/client/index.html`));
-// app.use("/*", Express.static(__dirname + "/client"));
-//app.use('/products/:id', Express.static(`${__dirname}/client/details.html`));
+
 
 Mongoose.Promise = BlueBird;
 Mongoose.connect("mongodb://localhost/database", function() {
