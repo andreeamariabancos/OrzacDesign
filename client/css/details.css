@@ -1,0 +1,185 @@
+@import url("variables.css");
+
+/**** General Style****/
+
+.details-page-header {
+	position: relative;
+	height: 250px;
+	background-image:linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7)), url("../img/header-products.jpg");
+	background-position: center no-repeat;
+	background-attachment: fixed;
+}
+
+.details-column {
+	width: 500px;
+	height: 100%;
+	display: inline-block;
+}
+.details-column.details {
+	position: relative;
+	height: 500px;
+	width: 210px;
+	left: 25%;
+	margin-top: 5%;
+	text-align: center;
+}
+
+.product-name {
+	font-size: 26px;
+	font-weight: 500;  
+	margin-top: 8px;  
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	padding-bottom: 0px;
+	border-bottom: 1px solid var(--fourth-color);
+}
+
+.product-price {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	font-size: 16px;
+	font-weight: 400;
+	padding-bottom: 0px;
+}
+
+.product-colors {
+	margin-bottom: 25px;
+}
+
+.product-quantity {
+	width: 80px;
+	margin-left: 60px;
+}
+
+/**** Colors-Selector ****/
+
+.colors-selector {
+	width: 150px;
+	display: block;
+	list-style: none;
+	padding: 10px;
+	margin-left: 15px;
+}
+
+.colors-selector .colors {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	border-radius: 50px;
+	cursor:pointer;
+  
+}
+.white {
+	border: 1px solid var(--second-color);
+	border-radius: 50%;
+	background: var(--first-color)
+}
+.black {
+	background: var(--black);
+}
+
+.red {
+	background: var(--red);
+}
+
+.brown {
+ background: var(--brown);
+}
+
+.input-quantity {
+	margin-top: 10px;
+	width: 40px;
+	height: 30px;
+	padding: 5px 3px;
+	text-align: center;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: text;
+	border-width: 1px;
+	border-style: dotted;
+}
+
+
+button.add-cart {
+  background-color: var(--black);
+  border-radius: 5px;
+  color: var(--first-color);
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 7px;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+button.add-cart span {
+  display: inline-block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  opacity: 0.8;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+button.add-cart i {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  display: block;
+  position: absolute;
+  opacity: 0;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+button.add-cart:before {
+  border-radius: 3px;
+  content: '';
+  top: 3px;
+  bottom: 3px;
+  left: 50%;
+  right: 50%;
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+button.add-cart:hover.red,
+button.add-cart.hover.red {
+  color: var(--fourth-color);
+}
+
+button.add-cart:hover span,
+button.add-cart.hover span {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+button.add-cart:hover i,
+button.add-cart.hover i {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+button.add-cart:hover:before,
+button.add-cart.hover:before {
+  left: 3px;
+  right: 3px;
+  background: var(--first-color);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+button.add-cart.red {
+  background-color: #962d22;
+}
