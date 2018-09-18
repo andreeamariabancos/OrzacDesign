@@ -126,7 +126,6 @@ $(document).ready(function() {
 
 		totalResults = data.total;
 		render(data.result);
-		console.log(data.result)
 	}
 
 	/**
@@ -152,11 +151,11 @@ $(document).ready(function() {
 	*/
 	function render(array) {
 		$(".products").empty();
-
 		for (var i = 0; i < array.length; i++) {
+// console.log(window.location.origin + array[i].img)
 			$(".products").append(`
 			<div class="product-card">
-				<img src="${array[i].img}" title="${array[i].title}" value="${array[i].description}"}"> 
+				<img src="${window.location.origin}/${array[i].img}" title="${array[i].title}" value="${array[i].description}"}"> 
 				<div class="figcaption">
 					<h2>${array[i].title}</h2>
 					<p>${array[i].description}</p>	
@@ -204,77 +203,81 @@ $(document).ready(function() {
 	}
 
 
-		$('#searchFilter').keyup(function() {
-			selectPage(0);
-    	});
-
-	
-		$(".input-color").click(function() {
-			selectPage(0);
-		});	
-    
-
-		$('#select').change(function() {
-			selectPage(0);				
-		});
-    
-
-		$('.radio-input').one('click', function() {
-		var price = $('#radioPrice').prop('checked');
-		var design = $('#radioDesign').prop('checked');
-		if(price) {
-			$('#radioFilter').append(
-						`<li class = "range-price">	
-							  <div class="container-slider">
-								  <input id="rangeInput"  step="100" class="range-input" type="range" min="100" max="3000"">
-								  <span id="labelRange" class="range-value">1450</span>
-							</div>
-						</li>`);
-
-				$("[type=range]").change(function() {
-				var newVal=$(this).val();
-				$(this).next().text(newVal);
-				selectPage(0);
-			});
-
-		} else if (design) {
-			$('#radioFilter').append(
-			`<li class="li radio">
-					<input value="Classic" class="radio-design" type="radio" name="radioGroup">
-					<label class="radio-label" for="Classic">Classic</label>	  
-				</li>
-				<li class="li radio">
-					<input value="Modern" class="radio-design" type="radio" name="radioGroup" >
-					<label class="radio-label" for="Modern">Modern</label>	  
-				</li>
-				<li class="li radio">
-					<input value="Vintage" class="radio-design" type="radio" name="radioGroup" >
-					<label class="radio-label" for="Vintage">Vintage</label>	  
-				</li>`);
-
-			$(".radio-design").click(function() {
-					selectPage(0);
-		    });
-		}
-
-		$('.hideSecond').click(function() {	
-			$('.li').removeClass('none');
-	        $('#rangeInput').addClass('none');
-	        $('.range-value').addClass('none');	
-		});
-
-		$('.showFirst').click(function() {
-	        $('#rangeInput').removeClass('none');
-	        $('.range-value').removeClass('none');
-			$('.li').addClass('none');
-		});				
+	$('#searchFilter').keyup(function() {
+		selectPage(0);
 	});
+
+
+	$(".input-color").click(function() {
+		selectPage(0);
+	});	
+
+
+	$('#select').change(function() {
+		selectPage(0);				
+	});
+
+
+	$('.radio-input').on('click', function() {
+	var price = $('#radioPrice').prop('checked');
+	var design = $('#radioDesign').prop('checked');
+
+	if(price) {
+		$('.range-price').empty();
+		$('#radioFilter').append(
+					`<li class = "range-price">	
+						  <div class="container-slider">
+							  <input id="rangeInput"  step="100" class="range-input" type="range" min="100" max="3000"">
+							  <span id="labelRange" class="range-value">1450</span>
+						</div>
+					</li>`);
+
+			$("[type=range]").change(function() {
+			var newVal=$(this).val();
+			$(this).next().text(newVal);
+			selectPage(0);
+		});
+
+	} else if (design) {
+		$('.li').empty();
+		$('#radioFilter').append(
+		`<li class="li radio">
+				<input value="Classic" class="radio-design" type="radio" name="radioGroup">
+				<label class="radio-label" for="Classic">Classic</label>	  
+			</li>
+			<li class="li radio">
+				<input value="Modern" class="radio-design" type="radio" name="radioGroup" >
+				<label class="radio-label" for="Modern">Modern</label>	  
+			</li>
+			<li class="li radio">
+				<input value="Vintage" class="radio-design" type="radio" name="radioGroup" >
+				<label class="radio-label" for="Vintage">Vintage</label>	  
+			</li>`);
+
+
+		$(".radio-design").click(function() {
+				selectPage(0);
+	    });
+	} 
+
+	$('#hideSecond').click(function() {	
+		$('.li').removeClass('none');
+        $('#rangeInput').addClass('none');
+        $('.range-value').addClass('none');	
+	});
+
+	$('#showFirst').click(function() {
+        $('#rangeInput').removeClass('none');
+        $('.range-value').removeClass('none');
+		$('.li').addClass('none');
+	});				
+});
 
 	$('#radioNan').click(function() {
 		$('.radio').remove();
 		$('.range-price').remove();
+		selectPage(0);
 	});
-
 		
 });
 

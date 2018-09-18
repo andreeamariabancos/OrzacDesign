@@ -7,13 +7,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!--My Script-->
-	<script type="text/javascript" src="js/filter-jquery.js"></script>
-	<script type="text/javascript" src="js/responsive-header-jquery.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/filter-jquery.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/responsive-header-jquery.js"></script>
 
 	<!--My Stylesheet-->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/products.css">
-	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/main.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/products.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/header.css">
 	
 
 	<!--Font Style Stylesheet-->
@@ -102,13 +102,7 @@
 					<h4>Select categories</h4>	
 					<div class="filter-content">
 						<div>
-							<select id="select">
-<!-- 								<option value="All">all</option>
- --><!-- 								<option value="Bedroom">bedroom</option>
-								<option value="Living Room">living room</option>
-								<option value="Kitchen">kitchen</option>
-								<option value="Bathroom">bathroom</option> -->
-							</select>
+							<select id="select"></select>
 						</div> 
 					</div> 
 				</div> <!-- End Select Block-->
@@ -118,14 +112,14 @@
 					<h4>more filters</h4>
 					<ul id="radioFilter" class="filter-content">
 						<li>
-							<input id="radioNan" value="None" class="radio-design" type="radio" name="radioButton" >
+							<input id="radioNan" value="None" type="radio" name="radioButton" >
 							<label class="radio-label" for="Modern">None</label>
 						</li>
-						<li class="showFirst">
+						<li id="showFirst">
 							<input id="radioPrice"  type="radio" name="radioButton" class="radio-input" >
 							<label id = "labelPrice" for="radioPrice">Price</label>
 						</li>
-						<li class="hideSecond">
+						<li id="hideSecond">
 							<input id="radioDesign"  type="radio" name="radioButton" class="radio-input">
 							<label id="labelDesign" for="radioDesign">Design</label>
 						</li>
