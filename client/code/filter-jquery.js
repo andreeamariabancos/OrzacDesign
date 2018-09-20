@@ -152,9 +152,8 @@ $(document).ready(function() {
 	function render(array) {
 		$(".products").empty();
 		for (var i = 0; i < array.length; i++) {
-// console.log(window.location.origin + array[i].img)
 			$(".products").append(`
-			<div class="product-card">
+			<div class="product-card" id="${array[i]._id}">
 				<img src="${window.location.origin}/${array[i].img}" title="${array[i].title}" value="${array[i].description}"}"> 
 				<div class="figcaption">
 					<h2>${array[i].title}</h2>
@@ -169,10 +168,8 @@ $(document).ready(function() {
 		renderNavigation(pages);
 
 			$(".product-card").click(function() {
-				 window.location = '/details/'
-				 alert($(this).attr("id"));
-
-			//alert("bla bla")
+				var id = $(this).attr("id");
+				window.location = '/details/' + id;		
 		});	
 	}
 

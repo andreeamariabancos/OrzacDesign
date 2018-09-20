@@ -2,6 +2,15 @@ module.exports = function (Mongoose) {
 	var Furniture = Mongoose.models.Furniture;
 
 	/**
+	 * Get all products. 
+	*/
+	this.getProducts = function(success,fail) {
+		Furniture.find(function(error, result) {
+			error ? fail(error) : success(result);
+		});		
+	}
+
+	/**
 	 * Get product by limit for pagination and filter
 	*/
 
@@ -63,14 +72,6 @@ module.exports = function (Mongoose) {
 		});
 	}
 
-	/**
-	 * Get all products. 
-	*/
-	this.getProducts = function(success,fail) {
-		Furniture.find(function(error, result) {
-			error ? fail(error) : success(result);
-		});		
-	}
 
 	/**
 	* Get products by id.
@@ -101,7 +102,7 @@ module.exports = function (Mongoose) {
 	this.addProducts = function(title, success, fail) {
 		var newFurniture = new Furniture(title);
 		newFurniture.save (function(error, result) {
-			error ? fail(error) : success(result); //short if
+			error ? fail(error) : success(result); // :short if
 		});
 	}
 

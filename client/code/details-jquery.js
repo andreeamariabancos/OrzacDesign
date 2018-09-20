@@ -27,28 +27,42 @@ $(document).ready(function() {
 		
 	}
 
-	function render(prod) {
-		$("#imgDetails").append(`
+	function render(prod) {	
+		let exhibit = prod.exhibit;
+		for(var i = 0; i<exhibit.length; i++) {
+			$("#small").append(`
+			<a href="#" data-full="${window.location.origin}/${exhibit[i]}">
+				<img src="${window.location.origin}/${exhibit[i]}"> 
+			</a> `)		
+		}
+
+		$("#small").children().first().addClass('selected');
+
+		$("#full").append(`
 			<img src="${window.location.origin}/${prod.img}"> 
 		`);
 
-		$("#containerDetails").append(`
-		<div class="product-name">${prod.title}</div>
-			<div class="product-price">
-				<span >Price:</span>
-				<span>${prod.price}</span>
-			</div>
+		$('a').click(function() {
+			var largeImage = $(this).attr('data-full');
+			$('.selected').removeClass();
+			$(this).addClass('selected');
+			$('.full img').hide();
+			$('.full img').attr('src', largeImage);
+			$('.full img').fadeIn();
+		}); 
 
+		$("#containerDetails").append(`
+			<div class="product-name">${prod.title}</div>
+				<div class="product-price">
+					<span >Price:</span>
+					<span>${prod.price}</span>
+				</div>
 			<div class="product-colors">
 				<p>Colors</p>
-				<ul class="colors-selector ">
-					<li  class="colors black"></li>
-					<li  class="colors red"> </li>
-					<li  class="colors white"> </li>
-					<li  class="colors brown"> </li>
+				<ul class="colors-selector">
 				</ul>
 			</div>
-			
+
 			<div class="product-quantity">
 				<span>Quantity</span>
 				<input class="input-quantity" type="text" value="1">
@@ -56,8 +70,14 @@ $(document).ready(function() {
 					<span>Add to Cart</span>
 					<i class="fas fa-cart-plus"></i>
 				</button>
-			</div>
-		`);
+			</div>`)
+
+		let colors = prod.colors;
+		for(var i = 0; i<colors.length; i++) {
+			$(".colors-selector").append(`
+			<li  class="colors ${colors[i].toLowerCase()}"></li>`)		
+		}
 	}
-	
+
+
 });

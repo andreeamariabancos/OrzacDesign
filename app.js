@@ -24,7 +24,7 @@ app.get(/^\/(?!api).*/, function(request, response) {
 	if (url.indexOf('/details/') == 0) {
 		url = '/details';
 	} else {
-		console.log('nope')
+		//console.log('nope')
 	}
 	response.sendFile(`./client${url}.html`, { root: __dirname });
 });
@@ -36,6 +36,8 @@ Mongoose.connect("mongodb://localhost/database", function() {
 	require("./server/products/product.router")(Mongoose, app);
 	require("./server/categories/category.model")(Mongoose);
 	require("./server/categories/category.router")(Mongoose, app);
+	require("./server/type/type.model")(Mongoose);
+	require("./server/type/type.router")(Mongoose, app);
 });
 
 app.listen(4002, function () {
