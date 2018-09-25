@@ -14,7 +14,7 @@ module.exports = function (Mongoose) {
 	 * Get product by limit for pagination and filter
 	*/
 
-	this.getProductsLimit = function(index, count, title, description, colors, categories, design, price, success, fail) {
+	this.getProductsLimit = function(index, count, title, description, colors, categories, design, price, type, success, fail) {
 		const options = {};
 
 		if (title) {
@@ -41,6 +41,13 @@ module.exports = function (Mongoose) {
 			options.$and = options.$and || [];
 			options.$and.push({
 				categories
+			});
+		}
+
+		if(type) {
+			options.$and = options.$and || [];
+			options.$and.push({
+				type
 			});
 		}
 
@@ -110,11 +117,23 @@ module.exports = function (Mongoose) {
 	/**
 	 * Delete products by id
 	*/
-	this.deleteProducts = function(id,succes,fail) {
-		Furniture.deleteOne({_id: id}, function(error,result) {
-			error ? fail(error) : succes(result);
-		});
-	}
+    this.remove = function (id, success, fail) {
+        Furniture.deleteOne({
+            _id: id
+        }, function (error, result) {
+            error ? fail(error) : success(result);
+        });
+    }
+
+	/**
+     * Delete all types
+    */
+
+    this.removeAll = function(success, fail) {
+        Furniture.remove(function(error, result) {
+            error ? fail(error) : success(result);
+        });
+    }
 
 
 	/**
@@ -125,6 +144,7 @@ module.exports = function (Mongoose) {
 			error ? fail(error) : succes(result);
 		});
 	}
+
 
 }
 

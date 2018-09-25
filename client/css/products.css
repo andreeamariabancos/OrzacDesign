@@ -274,7 +274,6 @@ label {
 	background: rgba(255, 255, 255, 0);
 	right: 30px;
 	opacity: 1;
-	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
 }
 .button-overlay {
@@ -297,7 +296,7 @@ label {
     padding-left: 350%;
     margin-top: -120%;
     opacity: 0;
-    transition: all 0.8s
+    transition: all 0.8s;
 }
 
 .button-overlay:active:after {

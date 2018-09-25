@@ -1,0 +1,157 @@
+@import url("variables.css");
+
+/**** Cart ****/
+
+.cart-bottom {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex; 
+  display: none; 
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-list {
+  background: #f2f2f2;
+  width: 622px;
+  height: 470px;
+  border-radius: 10px;
+}
+
+.close_btn {
+  position: absolute;
+  right: 13px;
+  top: 8px;
+  color: #602935;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.cart_icon {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.list {
+  width: 100%;
+}
+
+.list div {
+  display: inline-block;
+}
+
+.cart-items {
+  font-size: 0;
+  white-space: nowrap;
+  height: 36px;
+  line-height: 100px;
+  width: 100%;
+  margin-left: 68px;
+}
+
+.cart-items div {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 85px;
+}
+
+.color-list {
+  margin-left: 25px;
+}
+
+.cart-quantity {
+  margin-left: 27px;
+}
+
+.total {
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.total div {
+  position: absolute;
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+  font-weight: 600;
+}
+
+.totalT {
+  left: 900px;
+}
+
+.totalP {
+  left: 965px;
+}
+
+ .checkout {
+  height: 127px;
+  background: var(--cart);
+  border-radius: 0 0 10px 10px;
+}
+
+.cart-bottom .cart-list .checkout:after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, #e6e6e6 0%, #c8c8c8 13%, #808080 45%, #cccccc 86%, #e6e6e6 100%);
+  top: -48px;
+  opacity: 0.6;
+}
+
+.checkout button {
+  width: 138px;
+  height: 31px;
+  border-radius: 50px;
+  color: var(--first-color);
+  background: var(--red);
+  letter-spacing: 1.5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  margin-left: 100px;
+  margin-top: 65px;
+}
+
+.checkout .cancel {
+  color: var(--red);
+  font-weight: bold;
+  background: none;
+  border: 2px solid var(--red);
+}
+
+.list ul {
+  margin: 0;
+  padding: 0 40px;
+  height: 235px;
+  overflow-y: scroll;
+}
+
+.list ul li {
+  margin-top: 30px;
+}
+
+.list ul li div {
+  font-size: 12px;
+  display: inline-block;
+  width: 60px;
+  margin-right: 36px;
+  vertical-align: text-top;
+}
+
+.cart-img img {
+  width: 100%;
+  display: block;
+}

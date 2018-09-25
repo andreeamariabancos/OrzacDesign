@@ -4,23 +4,32 @@
 	<title>Details Page OrzacDesign</title>
 
 	<!--Jquery Script-->
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!--My Script-->
+	<!--Script Boostrap for similar products carousel-->
+	<script type="text/javascript" src="http://localhost:4002/boostrap/resCarousel.min.js"></script>
 	<script type="text/javascript" src="http://localhost:4002/code/responsive-header-jquery.js"></script>
 	<script type="text/javascript" src="http://localhost:4002/code/details-jquery.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/cart-jquery.js"></script>
 
 	<!--My Stylesheet-->
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/main.css">
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/header.css">
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/details.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/cart.css">
+	<!--Boostrap for similar products carousel-->
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/boostrap/resCarousel.min.css">
 
 	<!--Font Style Stylesheet-->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
 	<!--Fontawesome Stylesheet-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 	
+
 </head>
 <body>
 	<!-- Header Section-->
@@ -30,7 +39,7 @@
 				<div class="nav" id="responsiveNav">
 					<div class="responsive-media">
 						<a href="#">
-							<i class="fas fa-cart-arrow-down"></i>
+							<i id="cartIcon" class="fas fa-cart-arrow-down"></i>
 						</a>
 						<a href="#">
 							<i class="fab fa-facebook-square"></i>
@@ -66,6 +75,37 @@
 	<div id="containerDetails" class="details-column details"></div>
 
 	<!-- Silimar Products Carousel -->
+	<h2 class="similar">You may also like</h2>
+	<div class="container">
+		<div class="resCarousel" data-items="2-4-4-4" data-interval="2000" data-slide="1" data-animator="lazy">
+			<div id="slide" class="resCarousel-inner"> </div>
+			<button class='btn btn-default leftRs'><</button>
+			<button class='btn btn-default rightRs'>></button>
+		</div>
+	</div>
 
+	<!-- Cart -->
+	<div id="cart" class="cart-bottom">
+		<div id="cartList" class="cart-list">
+			<div class="list">
+				<div class="cart-items">
+					<div>Description</div>
+					<div class="color-list">Color</div>
+					<div>QTY</div>
+					<div>Price</div>
+				</div>
+				<ul id="itemsCart">	</ul>
+			</div>
+			<div class="total">
+				<div class="totalT">Total:</div>
+				<div class="totalP"> 21600</div>
+			</div>
+			<div class="checkout">
+				<button class="cancel">Cancel</button>
+				<button>Checkout</button>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

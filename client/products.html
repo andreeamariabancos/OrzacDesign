@@ -9,11 +9,13 @@
 	<!--My Script-->
 	<script type="text/javascript" src="http://localhost:4002/code/responsive-header-jquery.js"></script>
 	<script type="text/javascript" src="http://localhost:4002/code/filter-jquery.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/cart-jquery.js"></script>
 
 	<!--My Stylesheet-->
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/main.css">
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/products.css">
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/header.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/cart.css">
 	
 
 	<!--Font Style Stylesheet-->
@@ -31,7 +33,7 @@
 			<div class="navbar">
 				<div class="nav" id="responsiveNav">
 					<div class="responsive-media">
-						<a href="#">
+						<a href="#" id="cartIcon">
 							<i class="fas fa-cart-arrow-down"></i>
 						</a>
 						<a href="#">
@@ -76,8 +78,8 @@
 					<h4>choose the color</h4>
 					<ul id="color-filter" class="filter-content">
 						<li>
-							<input type="checkbox" name="red" value="red" class="input-color">	
-							<label for="red">red</label>
+							<input type="checkbox" name="grey" value="grey" class="input-color">	
+							<label for="grey">grey</label>
 						</li>
 
 						<li>
@@ -162,6 +164,31 @@
 	</div><!-- End Products/Pagination Section-->
 
 	</div><!-- End Content Page -->
+
+
+	<!-- Cart -->
+	<div id="cart" class="cart-bottom">
+		<div id="cartList" class="cart-list">
+			<div class="list">
+				<div class="cart-items">
+					<div>Description</div>
+					<div>Color</div>
+					<div>QTY</div>
+					<div>Price</div>
+				</div>
+				<ul id="itemsCart">	</ul>
+			</div>
+			<div class="total">
+				<div class="totalT">Total:</div>
+				<div class="totalP"> 21600</div>
+			</div>
+			<div class="checkout">
+				<button class="cancel">Cancel</button>
+				<button>Checkout</button>
+			</div>
+		</div>
+	</div>
+	
 
 </body>
 </html>

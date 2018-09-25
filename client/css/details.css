@@ -50,8 +50,10 @@
 
 .product-quantity {
   width: 80px;
-  margin-left: 60px;
+  margin-left: 70px;
 }
+
+
 
 /**** Gallery Details Section ****/
 
@@ -73,12 +75,13 @@
 
 .small a img {
   width: 150px;
+  max-height: 115px;
   height: auto;
 }
 
 .full img {
   width: 600px;
-  height: auto;
+  height: 400px;
   margin-top: 30px;
 }
 
@@ -87,9 +90,8 @@
 }
 
 .small a:hover, .small a.selected {
-  border: 3px solid var(--red); 
+  border: 3px solid var(--cart); 
 }
-
 
 
 /**** Details Section ****/
@@ -119,25 +121,47 @@
   background: var(--black);
 }
 
-.red {
-  background: var(--red);
+.grey {
+  background: var(--grey);
 }
 
 .brown {
   background: var(--brown);
 }
 
-.input-quantity {
-  margin-top: 10px;
-  width: 40px;
-  height: 30px;
-  padding: 5px 3px;
+.text {
+  display: flex;
+}
+.title, .count {
+  height: 100%;
+}
+
+.counter { 
+  display: flex;
+  height: 33px;
+  align-items: center;
+}
+.counter div {
+  border: 1px solid var(--fifth-color);
+  height: 25px;
+  width: 20px;
   text-align: center;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: text;
-  border-width: 1px;
-  border-style: dotted;
+  line-height: 25px;
+  margin-top: 15px;
+}
+.num {
+  font-weight: 500;
+  width: 26px;
+}
+.add {
+  border-right: 1px solid var(--fifth-color);
+}
+ .add, .sub {
+  cursor: pointer;
+}
+.add:hover, .sub:hover {
+  background: var(--fourth-color);
+  color: var(--first-color);
 }
 
 button.add-cart {
@@ -223,3 +247,29 @@ button.add-cart.hover:before {
 button.add-cart.red {
   background-color: #962d22;
 }
+
+/**** Dimilar products carousel ****/
+
+.similar {
+  text-align: center;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 2.2;
+  font-size: 30px;
+  color: inherit;
+  margin-bottom: 70px;
+
+}
+
+.similar:after {
+  width: 100px;
+  height: 2px;
+  background-color: var(--fourth-color);
+  display: block;
+  margin: 0 auto;
+  content: "";
+  opacity: 0.7;
+  color: var(--second-color);
+}
+
+

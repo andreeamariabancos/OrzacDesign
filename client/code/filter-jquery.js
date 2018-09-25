@@ -73,8 +73,8 @@ $(document).ready(function() {
 	 * Request a page by index.
 	*/
 	function requestPage(index) {
-		const title = $('#searchFilter').val().trim();
 
+		const title = $('#searchFilter').val().trim();
 		const $colors = $('#color-filter input[name]:checked');
 		const colors = [];
 
@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 		const categories = $('#select').val();
 		const design = $('input[name=radioGroup]:checked').val();
-		const price = $("[type=range]").val();
+		const price = $('[type=range]').val();
 			
 	 	$.ajax({
 			type : "POST",
@@ -99,14 +99,14 @@ $(document).ready(function() {
 				colors : colors, 
 				categories : categories,
 				design : design,
-				price : price
+				price : price,
 			}),
 			success: handlePage
 		});
     }
 	
     /**
-	 * Render category filter.
+	 * Request category for filter.
 	*/
 
     function renderCategoryFilter() {
@@ -153,13 +153,13 @@ $(document).ready(function() {
 		$(".products").empty();
 		for (var i = 0; i < array.length; i++) {
 			$(".products").append(`
-			<div class="product-card" id="${array[i]._id}">
-				<img src="${window.location.origin}/${array[i].img}" title="${array[i].title}" value="${array[i].description}"}"> 
-				<div class="figcaption">
+			<div class="product-card" >
+				<img src="${window.location.origin}/${array[i].img}" title="${array[i].title}" value="${array[i].description}" type: "${array[i].description}"}"> 
+				<div class="figcaption"  >
 					<h2>${array[i].title}</h2>
 					<p>${array[i].description}</p>	
 					<p class="price">${array[i].price} RON</p>
-    				<p class="button-overlay">Add Cart</p>
+    				<p id="${array[i]._id}" class="button-overlay">Add Cart</p>
 				</div class="figcaption">	
 			</div>`);
 		}
@@ -167,13 +167,11 @@ $(document).ready(function() {
 		pages = Math.ceil(totalResults / RESULTS_PER_PAGE);
 		renderNavigation(pages);
 
-			$(".product-card").click(function() {
-				var id = $(this).attr("id");
-				window.location = '/details/' + id;		
-		});	
+		$(".button-overlay").click(function() {
+			var id = $(this).attr("id");
+			window.location = '/details/' + id
+		});		
 	}
-
-	
 
 	
 	function createNavigation(pageCount) {
@@ -266,24 +264,25 @@ $(document).ready(function() {
 	    });
 	} 
 
-	$('#hideSecond').click(function() {	
-		$('.li').removeClass('none');
-        $('#rangeInput').addClass('none');
-        $('.range-value').addClass('none');	
-	});
+		$('#hideSecond').click(function() {	
+			$('.li').removeClass('none');
+			$('#rangeInput').addClass('none');
+			$('.range-value').addClass('none');	
+		});
 
-	$('#showFirst').click(function() {
-        $('#rangeInput').removeClass('none');
-        $('.range-value').removeClass('none');
-		$('.li').addClass('none');
-	});				
-});
+		$('#showFirst').click(function() {
+			$('#rangeInput').removeClass('none');
+			$('.range-value').removeClass('none');
+			$('.li').addClass('none');
+		});				
+	});
 
 	$('#radioNan').click(function() {
 		$('.radio').remove();
 		$('.range-price').remove();
 		selectPage(0);
 	});
-		
+
+
 });
 

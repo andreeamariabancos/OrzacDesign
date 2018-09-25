@@ -41,8 +41,9 @@ module.exports = function (Mongoose, app){
 		const categories = request.body.categories;
 		const design = request.body.design;
 		const price = request.body.price;
+		const type = request.body.type;
 		
-		furnitureManager.getProductsLimit(index, count, title, description, colors, categories, design, price, function(data) {
+		furnitureManager.getProductsLimit(index, count, title, description, colors, categories, design, price, type, function(data) {
 			response.status(200).json(data);
 		}, function(error) {
 			response.status(500).json(error);
@@ -76,14 +77,32 @@ module.exports = function (Mongoose, app){
 	/**
 	 * Delete product by id
 	*/
-	app.delete("/api/products/delete", function(request, response) {
-		furnitureManager.deleteProducts(request.body._id,function(data) {
-			response.status(200).json(data);
-		},
-		function(error){
-			response.status(500).json(error);
-		});
-	});
+	app.delete("/api/products/:id", function (request, response) {
+        var id = request.params.id;
+
+        furnitureManager.remove(id,
+            function (data) {
+                response.status(200).json(data);
+            },
+            function (data) {
+                response.status(500).json(data);
+            });
+    });
+
+	/**
+	 * Delete all types 
+	*/
+
+     app.delete("/api/products", function (request, response) {
+        furnitureManager.removeAll(
+            function (data) {
+                response.status(200).json(data);
+            },
+            function (data) {
+                response.status(500).json(data);
+            });
+    });
+
 
 
 	/**
