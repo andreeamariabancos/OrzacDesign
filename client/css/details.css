@@ -20,10 +20,12 @@
 .details-column.details {
   position: relative;
   height: 500px;
-  width: 210px;
+  width: 260px;
   left: 14%;
+  top: 20px;
   margin-top: 5%;
   text-align: center;
+
 }
 
 .product-name {
@@ -32,7 +34,7 @@
   margin-top: 8px;  
   margin-bottom: 10px;
   text-transform: uppercase;
-  width: 190px;
+  width: 285px;
   border-bottom: 1px solid var(--fourth-color);
 }
 
@@ -41,7 +43,6 @@
   margin-bottom: 25px;
   font-size: 16px;
   font-weight: 400;
-  padding-bottom: 0px;
 }
 
 .product-colors {
@@ -49,7 +50,7 @@
 }
 
 .product-quantity {
-  width: 80px;
+  width: 130px;
   margin-left: 70px;
 }
 
@@ -109,12 +110,11 @@
   height: 32px;
   display: inline-block;
   border-radius: 50px;
-  cursor:pointer;
-
+  cursor: pointer;
+  margin-left: 60px
 }
 .white {
   border: 1px solid var(--second-color);
-  border-radius: 50%;
   background: var(--first-color)
 }
 .black {
@@ -130,36 +130,49 @@
 }
 
 .text {
-  display: flex;
-}
-.title, .count {
-  height: 100%;
+  margin-right: 10px;
 }
 
-.counter { 
-  display: flex;
-  height: 33px;
-  align-items: center;
+.title-quant {
+  margin-bottom: 20px;
 }
-.counter div {
-  border: 1px solid var(--fifth-color);
-  height: 25px;
-  width: 20px;
-  text-align: center;
-  line-height: 25px;
-  margin-top: 15px;
+
+.minus {
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  float:left;
+  line-height: 36px;
 }
-.num {
-  font-weight: 500;
-  width: 26px;
+.quantity-input {
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  border-left:0px solid black;
+  float:left;
 }
-.add {
-  border-right: 1px solid var(--fifth-color);
+.plus {
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  border-left:0px solid var(--border);
+  float:left;
+  line-height: 36px;
 }
- .add, .sub {
-  cursor: pointer;
+
+.quantity-input input {
+  width:30px;
+  height:34px;
+  text-align:center;
+  border: none;
+  background: var(--bg-color);
 }
-.add:hover, .sub:hover {
+.quantity-input input:focus {
+  border:1px solid var(--border);
+  border: none;
+}
+
+.plus:hover, .minus:hover {
   background: var(--fourth-color);
   color: var(--first-color);
 }
@@ -248,7 +261,7 @@ button.add-cart.red {
   background-color: #962d22;
 }
 
-/**** Dimilar products carousel ****/
+/**** Similar products carousel ****/
 
 .similar {
   text-align: center;

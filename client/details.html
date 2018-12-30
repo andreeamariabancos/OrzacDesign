@@ -3,17 +3,6 @@
 <head>
 	<title>Details Page OrzacDesign</title>
 
-	<!--Jquery Script-->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<!--My Script-->
-	<!--Script Boostrap for similar products carousel-->
-	<script type="text/javascript" src="http://localhost:4002/boostrap/resCarousel.min.js"></script>
-	<script type="text/javascript" src="http://localhost:4002/code/responsive-header-jquery.js"></script>
-	<script type="text/javascript" src="http://localhost:4002/code/details-jquery.js"></script>
-	<script type="text/javascript" src="http://localhost:4002/code/cart-jquery.js"></script>
-
 	<!--My Stylesheet-->
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/main.css">
 	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/header.css">
@@ -40,6 +29,7 @@
 					<div class="responsive-media">
 						<a href="#">
 							<i id="cartIcon" class="fas fa-cart-arrow-down"></i>
+							<span class="cart-counter" id="itemCount"></span>
 						</a>
 						<a href="#">
 							<i class="fab fa-facebook-square"></i>
@@ -98,14 +88,25 @@
 			</div>
 			<div class="total">
 				<div class="totalT">Total:</div>
-				<div class="totalP"> 21600</div>
+				<div class="totalP"></div>
 			</div>
 			<div class="checkout">
 				<button class="cancel">Cancel</button>
-				<button>Checkout</button>
+				<button id="checkoutButton" class="checkout">Checkout</button>
+				<button class="remove" id ="removeItems">Remove</button>
 			</div>
 		</div>
 	</div>
+
 	
+	<!--Jquery Script-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--My Script-->
+	<!--Script Boostrap for similar products carousel-->
+	<script type="text/javascript" src="http://localhost:4002/boostrap/resCarousel.min.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/responsive-header-jquery.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/details-jquery.js"></script>
+	<script type="text/javascript" src="http://localhost:4002/code/cart-jquery.js"></script>
+
 </body>
 </html>

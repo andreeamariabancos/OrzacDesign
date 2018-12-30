@@ -1,149 +1,349 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OrzacDesign</title>
-
-
-	<!--Jquery Script-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<!--My Script-->
-	<script type="text/javascript" src="js/responsive-header-jquery.js"></script>
-
+	<title>OrzacDesign-mobilier</title>
 
 	<!--Fontawesome Stylesheet-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 	<!--Font Style Stylesheet-->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
 	<!--My Stylesheet-->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/header.css">
-	<link rel="stylesheet" type="text/css" href="css/offer.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/home-header.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/offer.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4002/css/presentation-home-page.css">
 
+	<!--My Stylesheet-->
+	<style type="text/css">
+
+
+	section .content {
+		height: 400px;
+		background-image: url("https://i.imgur.com/IsndIFS.png");
+		padding-top: 60px;
+	}
+	section .content .block {
+		display: inline-block;
+		width: 14.1666666%;
+	}
+	section .content .block.active {
+		color: #2980b9;
+	}
+	section .content .block:hover {
+		color: #2980b9;
+	}
+	section .content .block img {
+		margin-bottom: 10px;
+		width: 40px;
+	}
+	section .content .block span {
+		display: block;
+	}
+	section .clients {
+		height: 465px;
+		background-color: #fff;
+		padding-top: 85px;
+	}
+	section .clients p {
+		margin-bottom: 70px;
+	}
+
+	section .services-description {
+		margin:60px;
+	} 
+
+	section .clients .slider {
+		width: 96.875%;
+		margin: 0 auto;
+		padding: 0 3.6458333%;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		position: relative;
+	}
+
+	section .slider img {
+		width: 150px;
+	}
+
+	section .clients .slider .control {
+		position: absolute;
+		top: 25px;
+		width: 20px;
+		height: 20px;
+		border: 3px solid #000;
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+		cursor: pointer;
+	}
+	section .clients .slider .control:hover {
+		border-color: #2980b9;
+	}
+	section .clients .slider .control.left {
+		left: 0px;
+		border-right: none;
+		border-top: none;
+	}
+	section .clients .slider .control.right {
+		right: 0px;
+		border-left: none;
+		border-bottom: none;
+	}
+
+	footer {
+		background-color: #000;
+		height: auto;
+		color: #666666;
+		padding: 15px 1.5625%;
+	}
+	@media (max-width: 799px) {
+		footer {
+			font-size: 12px;
+		}
+	}
+	footer .social-buttons {
+		float: left;
+	}
+	footer p {
+		text-align: center;
+	    margin-top: 15px;
+	    margin-bottom: 15px;
+	}
+	footer:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	footer .footer-row {
+		display: flex;
+	}
+
+	footer .title-category-footer strong {
+		margin-bottom: 15px;
+		padding-bottom: 9px;
+		border-bottom: 3px solid transparent;
+		border-image: linear-gradient(to right, #FF851B 0%, #121214 89%);
+		border-image-slice: 1;
+		color: var(--first-color);
+	}
+
+	footer .list-category-container {
+		margin-top: 25px;
+	}
+
+	footer .list-footer {
+		margin-left:20px;
+	}
+
+	footer .list-footer li {
+		list-style-type: square;
+		margin-bottom: 5px;
+		color: var(--fourth-color);
+	}
+
+	footer .list-footer li a {
+		color: var(--bg-color);
+		font-family: Quicksand;
+		font-size: 15px;
+	}
+
+	footer .content-footer {
+	    display: inline-block;
+	    margin: 0 auto;
+	}
+	.fa-facebook-square {
+		margin-right: 10px;
+	}
+
+	.fa-facebook-square:before {
+	    content: "\f082";
+	    font-family: unset;
+	    
+	}
+	.fa-instagram:before {
+	    content: "\f16d";
+	    font-family: unset;
+	    margin-right: 10px;
+	}
+
+
+</style>
 </head>
-	<body>
-		<!--Header section-->
-		<header class="header-index">
-			<!--Navigation bar-->
-			<div class="navbar">
-				<div class="nav" id="responsiveNav">
-					<div class="responsive-media">
-						<a href="#">
-							<i class="fas fa-cart-arrow-down"></i>
-						</a>
-						<a href="#">
-							<i class="fab fa-facebook-square"></i>
-						</a>
-						<a href="#">
-							<i class="fab fa-instagram"></i>
-						</a>
-					</div>
-					<div class="leftgroup-bar">
-						<a href="/">home</a>
-						<a href="#">about</a>
-						<a href="/products">store</a>
-						<a href="#">contact</a>
-						<a  href="#">log in</a>
-					</div>
-					<a class="icon-nav" >
-						<i class="fa fa-bars"></i>
-					</a>
 
-				</div>		
-			</div><!-- End Navigation bar-->	
-
-			<!-- Header content-->
-			<div class="header-main">
-				<dix class="header-content">
-					<h3>Orzac<span>Design</span>-mobilier</h3>
-					<h1>free design, transportation, assembly !</h1>
-					<a href="" class="btn-show-me">Show me more!</a>
-				</dix>
-			</div><!-- End Header content-->	
-		</header> <!-- End Header section-->
-
-	    <!--Offer Section-->
-		<section class="offer-container">
-			<h2 >what we offer</h2>
-				<div class="row">
-					 <div class="photo1 grid">
-					    <a  href="">
-					      <div>
-					        <div class="content-grid">
-					          <div class="text-grid">Bedroom
-					            <div class="buttons-grid">See More!</div>
-					          </div>
-					        </div>
-					        <img src="img/offer/bedroom.jpg" alt="Bedroom" title="Bedroom">
-					      </div>
-					    </a>
-					 </div>
-					  <a href="file:///C:/Users/Andreea/Desktop/LICENTA/OrzacDesign/products.html"></a>
-
-					<div class="photo2 grid">
-					    <a  href="">
-					      <div>
-					        <div class="content-grid">
-					          <div class="text-grid">Living
-					            <div class="buttons-grid">See More!</div>
-					          </div>
-					        </div>
-					        <img src="img/offer/living_room.jpg" alt="Living" title="LivingRoom">
-					      </div>
-					    </a>
-					  </div>
-					  <a href="file:///C:/Users/Andreea/Desktop/LICENTA/OrzacDesign/products.html"></a>
-
-					<div class="photo3 grid">
-					    <a  href="">
-					      <div>
-					        <div class="content-grid">
-					          <div class="text-grid">Kitchen
-					            <div class="buttons-grid">See More!</div>
-					          </div>
-					        </div>
-					        <img src="img/offer/kitchen.jpg" alt="Kitchen" title="Kitchen">
-					      </div>
-					    </a>
-					  </div>
-					  <a href="file:///C:/Users/Andreea/Desktop/LICENTA/OrzacDesign/products.html"></a>
-
-					<div class="photo1 grid">
-					    <a  href="">
-					      <div>
-					        <div class="content-grid">
-					          <div class="text-grid">Bathroom
-					            <div class="buttons-grid">See More!</div>
-					          </div>
-					        </div>
-					        <img src="img/offer/bathroom.jpg" alt="Bathroom" title="Bathroom">
-					      </div>
-					    </a>
-					</div>		
-				</div>	
-			</section> <!--End Offer section-->
-
-		<!--End Collection section-->
-		<section class="collection-container">
-			<h2>New Collections</h2>
-				<div class="row-collection"> 
-				  <div class="column-collection">
-				    <img src="img/products/newcollection/1.jpg">
-				    <img src="img/products/newcollection/4.jpg">
-				  </div>  
-				  <div class="column-collection">
-				    <img src="img/products/newcollection/5.jpg">
-				    <img src="img/products/newcollection/2.jpg">
-				    <img src="img/products/newcollection/6.jpg">
-				  </div>
-				 <div class="column-collection">
-				    <img src="img/products/newcollection/9.jpg">
-				    <img src="img/products/newcollection/3.jpg">
-				    <img src="img/products/newcollection/8.jpg">
-				 </div>
+<body>
+	<!--Header section-->
+	<header class="header-index">
+		<!--Navigation bar-->
+		<div class="navbar">
+			<div class="nav" id="responsiveNav">
+				<div class="leftgroup-bar">
+					<a href="/" class="active test">Acasa</a>
+					<a href="/products" class="test">Magazin</a>
+					<a href="/abous-us" class="test">Despre noi</a>
+					<a href="/contact" class="test">Contact</a>
+					<a  href="/login" class="test">Contul meu</a>
 				</div>
-		</section> <!--End Collection section-->
-	</body>
+				<a class="icon-nav" >
+					<i class="fas fa-bars"></i>
+				</a>
+
+			</div>		
+		</div><!-- End Navigation bar-->	
+
+		<!-- Header content-->
+		<div class="home-page-header">
+			<div class="container">
+				<span class="pre-header near-header">Mobilier la comandă</span>
+				<h1>Design gratuit, transport, asamblare!</h1>
+				<span class="post-header near-header header-logo">
+					<h3>Orzac<span>Design</span>-mobilier</h3>
+				</span>
+			</div>
+		</div><!-- End Header content-->	
+	</header> <!-- End Header section-->
+
+	<!--Offer Section-->
+	<section class="offer-container">
+		<h2 >What we offer</h2>
+
+	</section> <!-- End Offer section -->
+
+	<!-- Banner Promotion Section -->
+	<section class="offer-container">
+		<div class="presentation-container">
+			<div class="presentation">
+				<div class="text-content">
+					<h1 class="title-content">
+						<strong> ȘTIM CE E CEL MAI BUN PENTRU CASA TA </strong>
+					</h1>
+					<p class="p-content"> O echipă de profesioniști cu ani de experiență</p>
+				</div>
+				<div class="button-container">
+					<a href="/about-us">
+						<span class="button-about-us">Despre noi</span>
+					</a>
+				</div>		
+			</div>
+
+		</div>
+	</section><!-- End Banner Promotion Secion-->
+
+	<!-- Services Section -->
+	<section class="offer-container">
+		<div class="content">
+			<div class="container">
+				<h2> Servicii OrzacDesign-mobilier </h2>
+				<div class="divider"></div>
+				<p class="services-description">Vă oferim o gama variată de servicii!</p>
+				<div class="block">
+					<img src="http://homelux.artlog.ro/pub/media/wysiwyg/smartwave/porto/page_text/Transport.png" />
+					<span>Livrare si montare </span>
+				</div>
+				<div class="block">
+					<img src="http://homelux.artlog.ro/pub/media/wysiwyg/smartwave/porto/homepage/01/icons/retur-produsee.png"/>
+					<span>Retur în 30 zile</span>
+				</div>
+				<div class="block active">
+					<img src="http://homelux.artlog.ro/pub/media/wysiwyg/smartwave/porto/homepage/01/icons/GARANTIA-CALITATII.png" />
+					<span>Garanția calității produselor</span>
+				</div>
+				<div class="block">
+					<img src="http://homelux.artlog.ro/pub/media/wysiwyg/smartwave/porto/homepage/01/icons/livrare-rapida.png" />
+					<span>Vopsire MDF și sticlă</span>
+				</div>
+				<div class="block">
+					<img src="http://homelux.artlog.ro/pub/media/wysiwyg/smartwave/porto/homepage/01/icons/ron.png" />
+					<span>Tapițare</span>
+				</div>
+			</div>
+		</div>
+	</section><!-- End Services Section -->
+
+	<!-- Clients Section -->
+	<section class="offer-container">
+		<div class="clients">
+			<div class="container">
+				<h2>Clienții nostri iubesc munca noastră</h2>
+				<div class="divider"></div>
+				<p> Ne străduim să răspundem cu profesionalism cerințelor, astfel încât să găsești în noi cel mai bun prieten. </p>
+				<div class="slider">
+					<img src="http://www.drurelax.ro/images/logo_big.png">
+					<img src="http://hagero.com/logistic/uploads/2015/11/Logo_w400.png" />
+					<img src="https://wholesalebuildingproducts.com/wp-content/uploads/2015/07/STO-1.png" />
+					<img src="http://www.werkromania.ro/images/logo.png" />
+				</div>
+			</div>
+		</div>
+	</section><!-- End Clients Section -->
+
+	<!-- Footer Section -->
+	<footer>
+		<div class="footer-row">
+
+			<div class="content-footer">
+				<div class="title-category-footer">
+					<strong>OrzacDesign-mobilier</strong>
+				</div>
+				<div class="list-category-container">
+					<ul class="list-footer">
+						<li><a href="/">Acasă</a></li>
+						<li><a href="/products">Magazin</a></li>
+						<li><a href="/abous-us">Despre noi</a></li>
+						<li><a href="/contact">Contact</a></li>	
+						<li><a href="/login">Contul meu</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="content-footer">
+				<div class="title-category-footer">
+					<strong>Suport Clienți</strong>
+				</div>
+				<div class="list-category-container">
+					<ul class="list-footer">
+						<li><a href="/abous-us">Despre noi</a></li>
+						<li><a href="/contact">Contact</a></li>	
+					</ul>
+				</div>
+			</div>
+
+			<div class="content-footer">
+				<div class="title-category-footer">
+					<strong>Urmăriți-ne</strong>
+				</div>
+				<div class="list-category-container">
+					<ul class="list-footer">
+						<li><a href="https://www.facebook.com/orzacdesign/" target="_blank"><i class="fab fa-facebook-square"></i>Facebook</a></li>
+						<li><a href="https://www.instagram.com/orzacdesign/?hl=ro"><i class="fab fa-instagram" target="_blank"></i>Instagram</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		
+		<div class="container">
+			<p>&copy; Copyright 2018 OrzacDesign-mobilier. Toate drepturile rezervate.<br/>Bancoș Andreea-Maria </p>
+		</div>
+
+	</footer> <!-- End Clients Section -->
+
+	<!--Jquery Script-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!--My Script-->
+	<script type="text/javascript" src="code/responsive-header-jquery.js"></script>
+	<script type="text/javascript" src="code/navigation.js"></script>
+
+
+</body>
 </html>

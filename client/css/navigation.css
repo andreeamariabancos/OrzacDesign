@@ -1,0 +1,134 @@
+/**** CSS for navigation section ****/
+
+@import url("variables.css");
+
+.navbar {
+	margin: 0 auto;
+  max-height: 50px;
+}
+
+.nav .icon-nav {
+	display: none;
+}
+
+.responsive-media {
+    display: inline-block;
+}
+
+.leftgroup-bar {
+    display: inline-block;
+  }
+
+.fa-cart-arrow-down, .fa-facebook-square,.fa-instagram, .fa-bars {
+	font-size: 20px;
+	color: var(--first-color);
+	font-weight: bold;
+	display: inline-block;
+}
+
+.icon-nav {
+	font-size: 20px;
+}
+
+.active {
+  color:red!important;
+}
+
+/**** Responsive header***/
+@media only screen and (max-width: 650px) {
+  .responsive-media a:not(:nth-child(1)) {
+      display: none;
+    }
+ .leftgroup-bar a {
+      display: none;   
+    }
+  .leftgroup-bar {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+  }
+    
+  .nav a.icon-nav {
+    margin-right: 25px;
+    float: right;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .responsive {
+    position: relative;
+  }
+  .responsive .icon-nav {
+    position: absolute;
+    right: 65px;
+    top: 5px;
+  }
+
+  .responsive a {
+    color: var(--first-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    float: none;
+    display: block;
+    letter-spacing: 2px;
+    margin-top: 10px;
+  }
+
+  .responsive-media a {
+    display: inline-block;
+    margin: 5px;
+  }
+
+}
+
+@media only screen and (min-width: 650px) {
+  .responsive {
+    position: relative;
+  }
+  .responsive .icon-nav {
+    position: absolute;
+    right: 65px;
+    top: 5px;
+  }
+
+
+.leftgroup-bar{
+  display: inline-block;
+  line-height: 40px;
+  color: var(--first-color);
+  text-decoration: none;
+  margin: 12px;  
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+
+
+}
+
+.responsive .icon-nav {
+  display: none;
+}
+
+.nav a {
+    display: inline-block;
+    line-height: 40px;
+    color: var(--first-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Quicksand;
+    font-weight: 500;
+    font-size: 20px;
+    margin-right: 50px;
+}
+
+.nav a:hover {
+  color: #FF851B;
+  opacity: 0.5;
+}
+
+.responsive-media a{
+  margin: 12px;
+}
+
+}

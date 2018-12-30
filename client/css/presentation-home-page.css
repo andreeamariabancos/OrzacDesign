@@ -1,0 +1,46 @@
+@import url("variables.css");
+
+
+.presentation-container {
+	background-image: linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7)), url(../img/banner.jpg);
+	background-position: right;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 200px;
+}
+
+.text-content {
+	text-align: left;
+    padding: 35px 70px;
+}
+
+.title-content strong {
+    color: var(--first-color);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: .5px;
+}
+
+.p-content {
+	color: var(--fourth-color);
+    opacity: 0.7;
+    margin-top: 15px;
+}
+
+.button-container {
+	text-align: center;
+    letter-spacing: .075em;
+    border: 1px solid;
+    padding: 12px 2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Quicksand;
+    font-weight: 200;
+    width: 155px;
+    margin-left: 100px;
+}
+
+.button-about-us {
+	color:var(--first-color);
+	font-size: small;
+}

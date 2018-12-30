@@ -119,13 +119,26 @@
   color: var(--first-color);
   background: var(--red);
   letter-spacing: 1.5px;
-  transform: translateY(-50%);
   cursor: pointer;
-  margin-left: 100px;
+  margin-left: 50px;
   margin-top: 65px;
 }
 
 .checkout .cancel {
+  color: var(--red);
+  font-weight: bold;
+  background: none;
+  border: 2px solid var(--red);
+}
+
+
+.checkout .checkout {
+  color: var(--first-color);
+  font-weight: bold;
+  border: 2px solid var(--red);
+}
+
+.checkout .remove {
   color: var(--red);
   font-weight: bold;
   background: none;
@@ -155,3 +168,16 @@
   width: 100%;
   display: block;
 }
+
+.cart-counter {
+  position: absolute;
+  top: 3px;
+  left: 61px;
+  width: 15px;
+  height: 17px;
+  border-radius: 50%;
+  color: var(--fourth-color);
+  text-align: center;
+  font-size: 30px;
+  padding: 5px;
+  }

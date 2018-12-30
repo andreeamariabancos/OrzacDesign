@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Orzac Design-mobilier login</title>
+
+  <!--My Stylesheet-->
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+  <link rel="stylesheet" type="text/css" href="css/home-page-header.css">
+
+</head>
+<body>
+
+<section>
+    <div class="menu">
+      <nav class="container">
+        <ul>
+          <li class="active"><a href="/">Acasa</a></li>
+          <li><a href="#">Servicii</a></li>
+          <li><a href="/products">Magazin</a></li>
+          <li class="middle-nav"><a href="/">
+            <img class="nav-logo" src="/img/logo.jpg"></a>
+          </li>
+          <li><a href="#">Echipa noastră</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="/login">Contul meu</a></li>
+        </ul>
+      </nav>
+    </div>
+</section>
+
+<section class="login-form-container">
+  <div class="user-form-options">
+    <div class="user-options-content">
+      <div class="user-signup">
+        <h2 class="user-signup-title">Nu ai un cont?</h2>
+        <p class="user-signup-description">Crează-ţi un cont şi personalizează-ţi experienţa pe site.</p>
+        <button class="user-signup-button" id="signUpUser">Crează Cont</button>
+      </div>
+
+      <div class="user-login">
+        <h2 class="user-login-title">Ai deja un cont creat?</h2>
+        <p class="user-login-description"> Intră în contul tău pentru a putea cumpăra produsele noastre de mobilier!</p>
+        <button class="user-login-button" id="loginUser">Intră în cont </button>
+      </div>
+    </div>
+    
+    <div class="user-option-form" id="optionFormUser">
+      <div class="user_forms-login">
+        <h2 class="form-title">Intră în cont </h2>
+        <form>
+          <fieldset>
+            <div class="form-fild">
+              <input type="email" placeholder="Email" class="form-fild-input" required autofocus />
+            </div>
+            <div class="form-fild">
+              <input type="password" placeholder="Password" class="form-fild-input" required />
+            </div>
+          </fieldset>
+          <div class="forms-button">
+            <button type="button" class="forms-button-forgot">Ai uitat parola?</button>
+            <input type="submit" value="Log In" class="forms-button-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="form-title">Crează cont</h2>
+        <form>
+          <fieldset>
+            <div class="form-fild">
+              <input type="text" placeholder="Full Name" class="form-fild-input" required />
+            </div>
+            <div class="form-fild">
+              <input type="email" placeholder="Email" class="form-fild-input" required />
+            </div>
+            <div class="form-fild">
+              <input type="password" placeholder="Password" class="form-fild-input" required />
+            </div>
+          </fieldset>
+          <div class="forms-button">
+            <input type="submit" value="Sign up" class="forms-button-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!--Jquery Script-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--My Script-->
+  <script type="text/javascript" src="http://localhost:4002/code/login-jquery.js"></script>
+
+</body>
+</html>

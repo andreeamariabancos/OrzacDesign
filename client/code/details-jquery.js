@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-	let arrayProduct = localStorage.getItem('itemToSave');
-	let storage = JSON.parse(arrayProduct);
-	if(!storage) {
-		storage = [];
-	}
 
 	/*$('img').click(function() {
 		location.reload();
@@ -16,10 +11,10 @@ $(document).ready(function() {
 		$.ajax({
 			url:renderProductDetails(),
 			success:function(){
-			requestSimilar();
-			
+			requestSimilar(),
+			incrementQuantity()
 			}
-		})
+		})	
 	}
 
 
@@ -57,7 +52,7 @@ $(document).ready(function() {
 		let colors = prod.colors;
 		let full = $("#full");
 		let small =$("#small");
-		let quantity = 1;
+
 
 		for(var i = 0; i < exhibit.length; i++) {
 			small.append(`
@@ -103,42 +98,46 @@ $(document).ready(function() {
 			<div class="product-quantity">
 				<div class="quantity">
 		          <div class="text">
-		            <div class="title">Quantity:&nbsp</div>
-		            <div class="count">1</div>
-		          </div>
-		          <div class="counter">
-		            <div class="sub">-</div>
-		            <div class="num">1</div>
-		            <div class="add">+</div>
-		          </div>
-		        </div>
+		            <div class="title-quant">Quantity:</div>
+		          </div>     
+				<div class="minus"> - </div>
+				<div class="quantity-input">
+					<input type="text"  value="1">
+				</div>
+				<div class="plus"> + </div>
+		    </div>
 				<button id="addCart" class="add-cart red">
 					<span>Add to Cart</span>
 					<i class="fas fa-cart-plus"></i>
 				</button>
 			</div>`)
-
 		
 		for(let i = 0; i<colors.length; i++) {
 			$(".colors-selector").append(`
 			<li  class="colors ${colors[i].toLowerCase()}"></li>`)		
 		}
 
-
-		function chooseQuantity(obj, n) {
-			$(obj).click(function() {
-				if(n == -1) {
-					( quantity <= 1 ) ? quantity == 1 : quantity += n;
-				} else {
-					quantity += n;  
-				}
-				$('.num').text(quantity);
-				$('.count').text(quantity);
-			});
-		}
-		chooseQuantity('.add', 1)
-		chooseQuantity('.sub', -1)
 	}
+
+	function incrementQuantity() {
+
+		$('.plus').on('click', function() {
+			let oldValue = $('input').val();
+			let newValue = parseInt(oldValue) + 1;
+			$('input').val(newValue);
+		});
+
+		$('.minus').on('click', function() {
+			let oldValue = $('input').val();
+			if (oldValue > 0){
+				let newValue = parseInt(oldValue) - 1;
+				$('input').val(newValue);
+			}	
+			console.log(newValue)
+		});
+
+	}
+	
 
 	/**
 	 * Request types for similar products.
@@ -188,8 +187,56 @@ $(document).ready(function() {
 	
 	function saveInLocalStorage(data) {
 			$('#addCart').on('click',function() {
-				storage.push(data);
-				localStorage.setItem('itemToSave', JSON.stringify(storage));	
+				let quantity = $('.quantity-input input').val();
+				console.log('quantity', quantity);
+				data.quantity = quantity;
+
+				let arrayProduct = localStorage.getItem('items');
+				let storage = JSON.parse(arrayProduct);
+				if(!storage) {
+					storage = [];
+					storage.push(data);
+					localStorage.setItem('items', JSON.stringify(storage));
+					location.reload();	
+				} else {
+					var exista = 0;
+					//parcurg store
+					for (var i = 0; i< storage.length; i++) {
+						//verific daca data exista deja in store
+						console.log(storage[i])
+						if (storage[i]._id === data._id) {
+							exista++;
+
+						}
+					}
+					if (exista == 0) {
+						storage.push(data);
+						localStorage.setItem('items', JSON.stringify(storage));
+					} else {
+						for (var i = 0; i< storage.length; i++) {
+						//verific daca data exista deja in store
+							if (storage[i]._id === data._id) {
+								storage[i].quantity = parseInt(storage[i].quantity)+parseInt(quantity);
+								localStorage.setItem('items', JSON.stringify(storage));
+							}
+						}
+					}
+				location.reload();
+				}
+				
+			});
+
+			let itemCount = 0;
+
+			$('#addCart').click(function (){
+				itemCount ++;
+				$('#itemCount').html(itemCount).css('display', 'block');
 			});
 		}
+
+		$('#checkoutButton').click(function () {
+				window.location = '/checkout'		
+		});
+
+		
 });

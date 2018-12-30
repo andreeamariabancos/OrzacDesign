@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">  
+</script>
+<script type="text/javascript" src="code/checkout.js"></script>
+<link rel="stylesheet" type="text/css" href="css/checkout.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+  <div class="checkout-container">
+    <div class="header-ch ch-completed">
+      <div class="form-section">
+        <h1>Finalizare Comanda</h1>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="forms ch-completed">
+        <h3 class="form-title ch-completed"><span>1</span>Detalii Comanda <a href="#shippingInfo" class="edit"> 
+          <i class="far fa-edit"></i></a>
+        </h3>
+        <ul id="shippingInfo" class="shipping-info ch-completed">
+          <li><label for="first Name" class="active">Nume</label>
+            <input type="text" /></li>
+            <li><label for="Last Name">Prenume</label>
+              <input type="text" />
+            </li>
+            <li><label for="country">Tara</label>
+              <input type="text" />
+            </li>
+            <li><label for="Address Line 1">Adresa de livrare:</label>
+              <input type="text" />
+            </li>
+            <li><label for="City"> Oras</label>
+              <input type="text" />
+            </li>
+            <li><label for="State">Judet</label>
+              <input type="text" />
+            </li>
+            <li><label for="Zip Code">Cod Postal</label>
+              <input type="text" />
+            </li>
+            <li><label for="Phone Number">Numar de telefon</label>
+              <input type="text" />
+            </li>
+            <li>
+              <input type="submit" value="Continue" class="btn" data-id="billingInfo" />
+            </li>
+          </ul>
+
+          <!-- Billing Info -->
+          <h3 class="form-title"><span>2</span>Detalii Facturare <a href="#billingInfo" class="edit"><i class="far fa-edit"></i></a></h3>
+          <ul id="billingInfo" class="billingInfo ch-completed">
+            <li><label for="first Name" class="active">Nume</label>
+              <input type="text" /></li>
+              <li><label for="Last Name">Prenume</label>
+                <input type="text" />
+              </li>
+              <li><label for="Company">Companie<span>(optional)</span></label>
+                <input class="optional" type="text" />
+              </li>
+              <li><label for="country">Tara</label>
+                <input type="text" />
+              </li>
+              <li><label for="Address Line 1">Adresa facturare:</label>
+                <input type="text" />
+              </li>
+              <li><label for="City">Oras</label>
+                <input type="text" />
+              </li>
+              <li><label for="State">Judet</label>
+                <input type="text" />
+              </li>
+              <li><label for="Zip Code">Cod Postal</label>
+                <input type="text" />
+              </li>
+              <li><label for="Phone Number">Numar de telefon</label>
+                <input type="text" />
+              </li>
+              <li>
+                <input type="submit" value="Continue" class="btn finalize" />
+              </li>
+            </ul>
+
+          </div>
+          <div class="receipt">
+            <h2>Sumar Comanda</h2>
+            <ul class="ch-wrap ch-completed ">
+              <li class="items odd ch-completed">
+
+                <div class="info-wrap">
+                  <div class="cart-section">
+                    <h3>Item Name 1</h3>
+                    <p>dvdvdv</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <ul class="subtotal ch-completed">
+              <li class="totalRow"><span class="label">Subtotal</span><span class="value">hjdjhdsbcds</span></li>
+
+              <li class="totalRow"><span class="label">Livrare</span><span class="value">Gratuit</span></li>
+
+              <li class="totalRow final"><span class="label">Total</span><span class="value">vdvdv</span></li>
+
+            </ul>
+          </div>
+        </div>
+
+
+
+
+      </body>
+      </html>

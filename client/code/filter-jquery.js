@@ -126,6 +126,7 @@ $(document).ready(function() {
 
 		totalResults = data.total;
 		render(data.result);
+		console.log(data.result);
 	}
 
 	/**

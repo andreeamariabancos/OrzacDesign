@@ -1,0 +1,205 @@
+@import url("variables.css");
+
+/**** General css for header and nav page ****/
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	font-family: Quicksand;
+	font-weight: 500;
+}
+
+a {
+	color: inherit;
+	font-weight: inherit;
+	font-family: 'Work sans', sans-serif;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+header {
+	background-image: linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7)), url(../img/header-index.jpg);
+	height: 800px;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+	color:#fff;
+	font-family: Quicksand;
+	font-weight: 500;
+}
+
+/**** Header section****/ 
+
+header .container {
+	padding-top: 200px;
+}
+header .container .near-header {
+	display: block;
+	font-size: 16px;
+}
+@media (max-width: 799px) {
+	header .container .near-header {
+		font-size: 12px;
+	}
+}
+header .container .near-header:before, header .container .near-header:after {
+	content: "";
+	display: inline-block;
+}
+header .container .pre-header {
+	margin-bottom: 30px;
+}
+header .container .pre-header:before, header .container .pre-header:after {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #FF9800;
+	opacity: 0.5;
+}
+header .container .pre-header:before {
+	margin-right: 15px;
+}
+header .container .pre-header:after {
+	margin-left: 15px;
+}
+header .container h1 {
+	font-size: 50px;
+	text-transform: uppercase;
+	font-weight: 500;
+	margin-bottom: 30px;
+	font-family: Quicksand;
+}
+
+.header-logo h3 {
+	font-size: 25px;
+}
+
+.header-logo h3 span {
+	background-color: #FF851B;
+	opacity: 0.5;
+	border-radius: 3px;
+	color: #151515;
+}
+
+@media (max-width: 799px) {
+	header .container h1 {
+		font-size: 30px;
+	}
+}
+header .container .post-header {
+	margin-bottom: 75px;
+}
+header .container .post-header:before, header .container .post-header:after {
+	width: 10.416666%;
+	height: 4px;
+	border: 1px solid #979898;
+	border-left: none;
+	border-right: none;
+	vertical-align: middle;
+}
+header .container .post-header:before {
+	margin-right: 2.08333%;
+}
+header .container .post-header:after {
+	margin-left: -1.91667%;
+}
+
+header .container button {
+	width: 25%;
+	height: 50px;
+	border: 1px solid #979898;
+	color: #fff;
+	background: transparent;
+	font-size: 14px;
+	text-transform: uppercase;
+	outline: none;
+	cursor: pointer;
+}
+@media (max-width: 799px) {
+	header .container button {
+		font-size: 10px;
+	}
+}
+header .container button:hover {
+	background-color: #fff;
+	color: #2f3030;
+}
+
+
+/**** Nav section ****/
+
+section {
+	text-align: center;
+}
+section .menu {
+	height: 75px;
+    background-color: var(--first-color);
+}
+section .menu nav ul {
+	font-size: 0px;
+}
+
+.nav-logo {
+	width: 100px;
+}
+
+@media (max-width: 959px) {
+	section .menu nav ul {
+		padding: 0 15px;
+	}
+}
+section .menu nav ul li {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 85px;
+	width: 14.2857142%;
+	color: #7f8c8d;
+	text-transform: uppercase;
+}
+@media (max-width: 799px) {
+	section .menu nav ul li {
+		font-size: 11px;
+		text-align: center;
+	}
+}
+section .menu nav ul li.active {
+	color: #2980b9;
+}
+section .menu nav ul li:hover {
+	color: #2980b9;
+}
+section .menu nav ul li.middle-nav {
+	font-size: 40px;
+	font-weight: 700;
+	color: #000;
+	text-align: center;
+	vertical-align: top;
+}
+@media (max-width: 799px) {
+	section .menu nav ul li.middle-nav {
+		font-size: 25px;
+	}
+}
+section .menu nav ul li.middle-nav:hover {
+	color: #2980b9;
+}
+
+@media (max-width: 799px) {
+	section h2 {
+		font-size: 30px;
+	}
+}
+
+.fa-bars:before {
+	font-weight: unset!important;
+	font-family: unset!important;
+}
